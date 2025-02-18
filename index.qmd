@@ -1,0 +1,145 @@
+---
+title: "Research Introduction: AI vs. Non-AI Careers"
+author: "Group 5"
+date: today
+format: 
+  html:
+    bibliography: references.bib
+    csl: csl/econometrica.csl
+    toc: true
+---
+
+**Introduction**
+
+AI is completely disrupting various industries, and it makes us all wondering about what this will mean for jobs. Although some sectors are gaining more jobs due to AI automation, others are trimming staff. In the middle of all this, job seekers definitely need to get a grip on which jobs are emerging in the AI era and what they need to be training for.
+
+Therefore, to begin with, we need to look at the trends in the job market for AI jobs and normal jobs. This research is all about determining whether AI is indeed creating more jobs or simply eliminating the traditional ones, as well as which sectors are being boosted by it, and what qualifications are required for AI jobs versus the normal ones. AI will probably create new career paths while reconfiguring existing ones [@soueidan2024impact].By examining employment trends, pay comparisons, and skill demand, we want to offer some advice on how people can prepare for the evolving workforce.
+
+**Market Trends**
+
+AI is generating jobs and causing some effects in fields like healthcare, finance, and technology. In healthcare, they're using AI to simplify diagnoses, discover new drugs, and tailor medicine to individuals, which is creating more demand for those familiar with AI in medicine (Medium, 2024). In finance, they're using AI for fraud detection, risk assessment, and high-frequency trading, so there's greater demand for data analysts and machine learning specialists too (Globalization Partners, 2024).
+
+Although AI has created many new positions in some fields, it's also making individuals to lose their jobs in some industries based on the same old repetitive and manual work. These days retail and manufacturing businesses are losing traditional jobs since robots and automation, some of which uses AI, are doing the human work (Innopharma Education, 2024). And what about customer support roles? Well, they're at risk too since AI chatbots and virtual assistants are responding to more and more customer inquiries. They are creating less need for human representatives (Nexford, 2024).
+
+AI jobs also get paid much more than average. If we look at fields like data science, AI engineering, and cloud computing, those professionals make a lot more than professionals like accounting, mechanical engineering, or retail. In addition, AI job postings are still increasing, especially in tech hubs like Silicon Valley, Boston, and Austin, where companies are especially willing to recruit AI talent (Globalization Partners, 2024).
+
+Companies are indeed searching for AI professionals in areas like machine learning, cybersecurity, and automation. However, since there is a shortage of qualified AI professionals, those who have AI skills can command relatively decent salaries and perks. New industries like fintech and AI-driven healthcare are booming with job growth, which is a positive development for anyone who has AI-related skills (Medium, 2024).
+
+**Skill analysis**
+
+The demand for AI skills grew 4 times over the period from 2010 to 2019. Firms are striving to hire more employees with AI-related skills, especially in the last three years, and the demand is still gaining momentum [@ai_labor_market_2021].  AI skills are important for technical positions. What’s more, these skills can provide a competitive salary advantage in managerial positions. We can focus on both technical and non-technical skills required for AI related jobs and analyze their importance in the job market.
+
+For technical skills, Python, R and Java are the most frequently used AI tools for data analysis. When a company needs to clean large datasets, employees or employers who are familiar with data modeling, data warehousing, and big data processing can use Hadoop, Spark, and SQL database tools to solve problems. Employees who have designing experience can do better when optimizing machine learning models for different applications. TensorFlow, PyTorch, and scikit-learn can be applied in training and optimizing AI models. In the aspect of AI Security, all corporations should be aware of AI-related security threats to prevent from attacks in AI models, so they can develop strategies in advance to ensure AI usage. 
+
+For non-technical skills, translating complex AI texts, some concepts and models into understandable language for administrators is one of the most important abilities. People should follow emerging AI trends, new algorithms, and evolving technologies and continue learning new AI tools and adjusting strategies for the company. 
+
+**Career Strategy Recommendations**
+
+A large number of ready AI tools, mainly in the Machine Learning (ML) field that has dominated the last decades of 21st century, offer opportunities to businesses and organizations to get involved and built machine learning solutions for their needs and customers[@ai_economics_2023].  CFA and FRM courses provide knowledge in financial and risk management. To enhance AI deployment capabilities, professionals can get certifications such as AWS Certified Machine Learning – Specialty, Microsoft Azure AI Engineer Associate, and Google Cloud Professional Data Engineer. These certifications provide whole framework of building, deploying, and managing AI solutions on cloud platforms. Professionals looking to excel in AI and data-driven fields should develop strong proficiency in programming and data manipulation, particularly with Python, SQL, R, and Spark. Lastly, learning something in big data processing such as Hadoop, Kubernetes, and MLOps can help company process data efficiently.
+
+While AI is emerging in many different industries, non-AI remains, particularly in fields that combine AI with traditional tools. Industries such as finance, healthcare, manufacturing, and marketing still require professionals about financials domaintly, even if AI plays a supporting role. Instead of fully changing to AI, professionals in finance, project management, healthcare, and marketing can still enhance their competitiveness by gaining AI and other data-driven skills. However, for those who are seeking higher salaries, transitioning into AI-related postions can definitely be highly beneficial.
+
+
+```{python}
+import pandas as pd 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("lightcast_job_postings.csv")
+df.info()
+print(df.head())
+
+#replace the missing Values
+missing_values = df.isnull().sum()
+missing_percentage = (missing_values / len(df)) * 100
+missing_data = pd.DataFrame({"Missing Values": missing_values, "Percentage": missing_percentage})
+missing_data = missing_data[missing_data["Missing Values"] > 0]
+missing_data = missing_data.sort_values(by="Percentage", ascending=False)
+
+salary_median = df["SALARY"].median()
+df["SALARY"].fillna(salary_median, inplace=True)
+
+#convert time columns
+date_columns = ["LAST_UPDATED_DATE", "LAST_UPDATED_TIMESTAMP", "POSTED", "EXPIRED"]
+for col in date_columns:
+    if col in df.columns:  
+        df[col] = pd.to_datetime(df[col], errors="coerce", utc=True) 
+
+#Extract Data
+selected_columns = df[['TITLE', 'SALARY', 'SALARY_FROM', 'SALARY_TO', 'SKILLS']]
+print(selected_columns.head())
+selected_columns.to_csv('Extracted_data.csv', index=False)
+```
+
+
+**Exploratory Data Analysis & Visualization**
+
+```{python}
+
+state_job_counts = df.groupby("STATE_NAME")["TITLE_NAME"].count().reset_index()
+state_job_counts = state_job_counts.sort_values(by="TITLE_NAME", ascending=False).head(10) 
+sns.set_theme(style="whitegrid")
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x="STATE_NAME", y="TITLE_NAME", data=state_job_counts, palette="viridis")
+
+plt.title("Top 10 States with Highest Job Postings", fontsize=14)
+plt.xlabel("State", fontsize=12)
+plt.ylabel("Number of Job Postings", fontsize=12)
+plt.xticks(rotation=45) 
+plt.show()
+```
+
+```{python}
+industry_job_counts = df.groupby("NAICS2_NAME")["TITLE_NAME"].count().reset_index()
+industry_job_counts = industry_job_counts.sort_values(by="TITLE_NAME", ascending=False).head(10)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x="NAICS2_NAME", y="TITLE_NAME", data=industry_job_counts, palette="coolwarm")
+
+plt.title("Top 10 Industries with Highest Job Postings", fontsize=14)
+plt.xlabel("Industry", fontsize=12)
+plt.ylabel("Number of Job Postings", fontsize=12)
+plt.xticks(rotation=45)
+plt.show()
+```
+
+```{python}
+plt.figure(figsize=(12, 6))
+sns.boxplot(x="NAICS2_NAME", y="SALARY_TO", data=df)
+plt.title("Salary Distribution by Industry", fontsize=14)
+plt.xlabel("Industry", fontsize=12)
+plt.ylabel("Salary (Max)", fontsize=12)
+plt.xticks(rotation=45)
+plt.show()
+```
+
+```{python}
+if "EMPLOYMENT_TYPE_NAME" in df.columns:
+    employment_counts = df["EMPLOYMENT_TYPE_NAME"].value_counts().reset_index()
+    employment_counts.columns = ["Employment Type", "Count"]
+
+    plt.figure(figsize=(8, 8))
+    plt.pie(employment_counts["Count"], labels=employment_counts["Employment Type"], autopct='%1.1f%%',
+            startangle=140, colors=sns.color_palette("pastel"))
+    plt.title("Employment Type Distribution", fontsize=14)
+    plt.show()
+else:
+    print("Error: Column 'EMPLOYMENT_TYPE_NAME' not found in the dataset.")
+```
+
+```{python}
+ import plotly.express as px
+
+df = pd.read_csv("lightcast_job_postings.csv")
+df_salary = df[(df['SALARY_FROM'] > 0) & (df['SALARY_TO'] > 0)]
+
+fig = px.histogram(df_salary, x="SALARY_FROM", nbins=50, title="Interactive Salary Distribution",
+                   labels={"SALARY_FROM": "Salary Lower Bound"},
+                   color_discrete_sequence=["blue"])
+fig.update_layout(xaxis_title="Salary", yaxis_title="Frequency", dragmode="pan")
+fig.show()
+```
+
+
+## References

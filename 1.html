@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-input06da214d</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="1_files/libs/quarto-html/quarto.js"></script>
+<script src="1_files/libs/quarto-html/popper.min.js"></script>
+<script src="1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div id="cell-0" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns.tolist())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
+</div>
+</div>
+<div id="cell-1" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.info()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 72476 entries, 0 to 72475
+Columns: 131 entries, ID to NAICS_2022_6_NAME
+dtypes: bool(2), float64(11), int64(27), object(91)
+memory usage: 71.5+ MB</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">LAST_UPDATED_DATE</th>
+<th data-quarto-table-cell-role="th">LAST_UPDATED_TIMESTAMP</th>
+<th data-quarto-table-cell-role="th">DUPLICATES</th>
+<th data-quarto-table-cell-role="th">POSTED</th>
+<th data-quarto-table-cell-role="th">EXPIRED</th>
+<th data-quarto-table-cell-role="th">DURATION</th>
+<th data-quarto-table-cell-role="th">SOURCE_TYPES</th>
+<th data-quarto-table-cell-role="th">SOURCES</th>
+<th data-quarto-table-cell-role="th">URL</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_2</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_2_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_3</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_3_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_4</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_4_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_5</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_5_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_6</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_6_NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1f57d95acf4dc67ed2819eb12f049f6a5c11782c</td>
+<td>2024-09-06</td>
+<td>2024-09-06 20:32:57.352 Z</td>
+<td>0</td>
+<td>2024-06-02</td>
+<td>2024-06-08</td>
+<td>6.0</td>
+<td>[\n "Company"\n]</td>
+<td>[\n "brassring.com"\n]</td>
+<td>[\n "https://sjobs.brassring.com/TGnewUI/Sear...</td>
+<td>...</td>
+<td>44</td>
+<td>Retail Trade</td>
+<td>441</td>
+<td>Motor Vehicle and Parts Dealers</td>
+<td>4413</td>
+<td>Automotive Parts, Accessories, and Tire Retailers</td>
+<td>44133</td>
+<td>Automotive Parts and Accessories Retailers</td>
+<td>441330</td>
+<td>Automotive Parts and Accessories Retailers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0cb072af26757b6c4ea9464472a50a443af681ac</td>
+<td>2024-08-02</td>
+<td>2024-08-02 17:08:58.838 Z</td>
+<td>0</td>
+<td>2024-06-02</td>
+<td>2024-08-01</td>
+<td>NaN</td>
+<td>[\n "Job Board"\n]</td>
+<td>[\n "maine.gov"\n]</td>
+<td>[\n "https://joblink.maine.gov/jobs/1085740"\n]</td>
+<td>...</td>
+<td>56</td>
+<td>Administrative and Support and Waste Managemen...</td>
+<td>561</td>
+<td>Administrative and Support Services</td>
+<td>5613</td>
+<td>Employment Services</td>
+<td>56132</td>
+<td>Temporary Help Services</td>
+<td>561320</td>
+<td>Temporary Help Services</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>85318b12b3331fa490d32ad014379df01855c557</td>
+<td>2024-09-06</td>
+<td>2024-09-06 20:32:57.352 Z</td>
+<td>1</td>
+<td>2024-06-02</td>
+<td>2024-07-07</td>
+<td>35.0</td>
+<td>[\n "Job Board"\n]</td>
+<td>[\n "dejobs.org"\n]</td>
+<td>[\n "https://dejobs.org/dallas-tx/data-analys...</td>
+<td>...</td>
+<td>52</td>
+<td>Finance and Insurance</td>
+<td>524</td>
+<td>Insurance Carriers and Related Activities</td>
+<td>5242</td>
+<td>Agencies, Brokerages, and Other Insurance Rela...</td>
+<td>52429</td>
+<td>Other Insurance Related Activities</td>
+<td>524291</td>
+<td>Claims Adjusting</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1b5c3941e54a1889ef4f8ae55b401a550708a310</td>
+<td>2024-09-06</td>
+<td>2024-09-06 20:32:57.352 Z</td>
+<td>1</td>
+<td>2024-06-02</td>
+<td>2024-07-20</td>
+<td>48.0</td>
+<td>[\n "Job Board"\n]</td>
+<td>[\n "disabledperson.com",\n "dejobs.org"\n]</td>
+<td>[\n "https://www.disabledperson.com/jobs/5948...</td>
+<td>...</td>
+<td>52</td>
+<td>Finance and Insurance</td>
+<td>522</td>
+<td>Credit Intermediation and Related Activities</td>
+<td>5221</td>
+<td>Depository Credit Intermediation</td>
+<td>52211</td>
+<td>Commercial Banking</td>
+<td>522110</td>
+<td>Commercial Banking</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>cb5ca25f02bdf25c13edfede7931508bfd9e858f</td>
+<td>2024-06-19</td>
+<td>2024-06-19 07:00:00.000 Z</td>
+<td>0</td>
+<td>2024-06-02</td>
+<td>2024-06-17</td>
+<td>15.0</td>
+<td>[\n "FreeJobBoard"\n]</td>
+<td>[\n "craigslist.org"\n]</td>
+<td>[\n "https://modesto.craigslist.org/sls/77475...</td>
+<td>...</td>
+<td>99</td>
+<td>Unclassified Industry</td>
+<td>999</td>
+<td>Unclassified Industry</td>
+<td>9999</td>
+<td>Unclassified Industry</td>
+<td>99999</td>
+<td>Unclassified Industry</td>
+<td>999999</td>
+<td>Unclassified Industry</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 131 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> df[[<span class="st">'TITLE'</span>, <span class="st">'SALARY'</span>, <span class="st">'SALARY_FROM'</span>, <span class="st">'SALARY_TO'</span>, <span class="st">'SKILLS'</span>]]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(selected_columns.head())</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>selected_columns.to_csv(<span class="st">'Extracted_data.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                TITLE   SALARY  SALARY_FROM  SALARY_TO  \
+0  ET29C073C03D1F86B4      NaN          NaN        NaN   
+1  ET21DDA63780A7DC09      NaN          NaN        NaN   
+2  ET3037E0C947A02404      NaN          NaN        NaN   
+3  ET2114E0404BA30075      NaN          NaN        NaN   
+4  ET0000000000000000  92500.0      35000.0   150000.0   
+
+                                              SKILLS  
+0  [\n  "KS126DB6T061MHD7RTGQ",\n  "KS126706DPFD3...  
+1  [\n  "KS122626T550SLQ7QZ1C",\n  "KS123YJ6KVWC9...  
+2  [\n  "KS1218W78FGVPVP2KXPX",\n  "ESF3939CE1F80...  
+3  [\n  "KS123QX62QYTC4JF38H8",\n  "KS7G6NP6R6L1H...  
+4                                                 []  </code></pre>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>missing_values <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>missing_percentage <span class="op">=</span> (missing_values <span class="op">/</span> <span class="bu">len</span>(df)) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> pd.DataFrame({<span class="st">"Missing Values"</span>: missing_values, <span class="st">"Percentage"</span>: missing_percentage})</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> missing_data[missing_data[<span class="st">"Missing Values"</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> missing_data.sort_values(by<span class="op">=</span><span class="st">"Percentage"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>salary_median <span class="op">=</span> df[<span class="st">"SALARY"</span>].median()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"SALARY"</span>].fillna(salary_median, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values in SALARY after filling:"</span>, df[<span class="st">"SALARY"</span>].isnull().<span class="bu">sum</span>())</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>date_columns <span class="op">=</span> [<span class="st">"LAST_UPDATED_DATE"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>, <span class="st">"POSTED"</span>, <span class="st">"EXPIRED"</span>]</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> date_columns:</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> df.columns:  </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        df[col] <span class="op">=</span> pd.to_datetime(df[col], errors<span class="op">=</span><span class="st">"coerce"</span>, utc<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">"LAST_UPDATED_DATE"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>, <span class="st">"POSTED"</span>, <span class="st">"EXPIRED"</span>]].head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Missing values in SALARY after filling: 0
+          LAST_UPDATED_DATE           LAST_UPDATED_TIMESTAMP  \
+0 2024-09-06 00:00:00+00:00 2024-09-06 20:32:57.352000+00:00   
+1 2024-08-02 00:00:00+00:00 2024-08-02 17:08:58.838000+00:00   
+2 2024-09-06 00:00:00+00:00 2024-09-06 20:32:57.352000+00:00   
+3 2024-09-06 00:00:00+00:00 2024-09-06 20:32:57.352000+00:00   
+4 2024-06-19 00:00:00+00:00        2024-06-19 07:00:00+00:00   
+5 2024-09-06 00:00:00+00:00 2024-09-06 20:32:57.352000+00:00   
+6 2024-08-02 00:00:00+00:00 2024-08-02 17:08:58.838000+00:00   
+7 2024-09-06 00:00:00+00:00 2024-09-06 20:32:57.352000+00:00   
+8 2024-06-21 00:00:00+00:00        2024-06-21 07:00:00+00:00   
+9 2024-10-09 00:00:00+00:00 2024-10-09 18:07:44.758000+00:00   
+
+                     POSTED                   EXPIRED  
+0 2024-06-02 00:00:00+00:00 2024-06-08 00:00:00+00:00  
+1 2024-06-02 00:00:00+00:00 2024-08-01 00:00:00+00:00  
+2 2024-06-02 00:00:00+00:00 2024-07-07 00:00:00+00:00  
+3 2024-06-02 00:00:00+00:00 2024-07-20 00:00:00+00:00  
+4 2024-06-02 00:00:00+00:00 2024-06-17 00:00:00+00:00  
+5 2024-06-02 00:00:00+00:00 2024-06-12 00:00:00+00:00  
+6 2024-06-02 00:00:00+00:00 2024-08-01 00:00:00+00:00  
+7 2024-06-02 00:00:00+00:00 2024-07-07 00:00:00+00:00  
+8 2024-06-02 00:00:00+00:00 2024-06-20 00:00:00+00:00  
+9 2024-06-02 00:00:00+00:00 2024-08-01 00:00:00+00:00  </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\ch625\AppData\Local\Temp\ipykernel_3324\1041197890.py:13: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df["SALARY"].fillna(salary_median, inplace=True)</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"STATE_NAME"</span>: [<span class="st">"California"</span>, <span class="st">"Texas"</span>, <span class="st">"New York"</span>, <span class="st">"Florida"</span>, <span class="st">"Illinois"</span>],</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"JOB_POSTINGS"</span>: [<span class="dv">12000</span>, <span class="dv">9500</span>, <span class="dv">8700</span>, <span class="dv">7500</span>, <span class="dv">6700</span>],</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"REMOTE_JOBS"</span>: [<span class="dv">4500</span>, <span class="dv">3800</span>, <span class="dv">3200</span>, <span class="dv">2900</span>, <span class="dv">2500</span>],</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY_FROM"</span>: [<span class="dv">60000</span>, <span class="dv">55000</span>, <span class="dv">58000</span>, <span class="dv">53000</span>, <span class="dv">52000</span>],</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY_TO"</span>: [<span class="dv">120000</span>, <span class="dv">110000</span>, <span class="dv">115000</span>, <span class="dv">105000</span>, <span class="dv">100000</span>],</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"INDUSTRY"</span>: [<span class="st">"Tech"</span>, <span class="st">"Finance"</span>, <span class="st">"Healthcare"</span>, <span class="st">"Retail"</span>, <span class="st">"Manufacturing"</span>]</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">"STATE_NAME"</span>, y<span class="op">=</span><span class="st">"JOB_POSTINGS"</span>, hue<span class="op">=</span><span class="st">"INDUSTRY"</span>, data<span class="op">=</span>df)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"招聘职位趋势（不同州）"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"州名"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"职位数量"</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">"行业"</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 24030 (\N{CJK UNIFIED IDEOGRAPH-5DDE}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 21517 (\N{CJK UNIFIED IDEOGRAPH-540D}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 32844 (\N{CJK UNIFIED IDEOGRAPH-804C}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 20301 (\N{CJK UNIFIED IDEOGRAPH-4F4D}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 25968 (\N{CJK UNIFIED IDEOGRAPH-6570}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 37327 (\N{CJK UNIFIED IDEOGRAPH-91CF}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 25307 (\N{CJK UNIFIED IDEOGRAPH-62DB}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 32856 (\N{CJK UNIFIED IDEOGRAPH-8058}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 36235 (\N{CJK UNIFIED IDEOGRAPH-8D8B}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 21183 (\N{CJK UNIFIED IDEOGRAPH-52BF}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 65288 (\N{FULLWIDTH LEFT PARENTHESIS}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 19981 (\N{CJK UNIFIED IDEOGRAPH-4E0D}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 21516 (\N{CJK UNIFIED IDEOGRAPH-540C}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 65289 (\N{FULLWIDTH RIGHT PARENTHESIS}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 34892 (\N{CJK UNIFIED IDEOGRAPH-884C}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)
+c:\Users\ch625\anaconda3\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 19994 (\N{CJK UNIFIED IDEOGRAPH-4E1A}) missing from font(s) Arial.
+  fig.canvas.print_figure(bytes_io, **kw)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample data (simulating original dataset)</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"STATE_NAME"</span>: [<span class="st">"California"</span>, <span class="st">"Texas"</span>, <span class="st">"New York"</span>, <span class="st">"Florida"</span>, <span class="st">"Illinois"</span>],</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"JOB_POSTINGS"</span>: [<span class="dv">12000</span>, <span class="dv">9500</span>, <span class="dv">8700</span>, <span class="dv">7500</span>, <span class="dv">6700</span>],</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"REMOTE_JOBS"</span>: [<span class="dv">4500</span>, <span class="dv">3800</span>, <span class="dv">3200</span>, <span class="dv">2900</span>, <span class="dv">2500</span>],</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY_FROM"</span>: [<span class="dv">60000</span>, <span class="dv">55000</span>, <span class="dv">58000</span>, <span class="dv">53000</span>, <span class="dv">52000</span>],</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY_TO"</span>: [<span class="dv">120000</span>, <span class="dv">110000</span>, <span class="dv">115000</span>, <span class="dv">105000</span>, <span class="dv">100000</span>],</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"INDUSTRY"</span>: [<span class="st">"Tech"</span>, <span class="st">"Finance"</span>, <span class="st">"Healthcare"</span>, <span class="st">"Retail"</span>, <span class="st">"Manufacturing"</span>]</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Seaborn theme</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Job Posting Trends (Bar Chart)</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">"STATE_NAME"</span>, y<span class="op">=</span><span class="st">"JOB_POSTINGS"</span>, hue<span class="op">=</span><span class="st">"INDUSTRY"</span>, data<span class="op">=</span>df)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Job Posting Trends by State"</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"State"</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Job Postings"</span>)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">"Industry"</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read dataset from local file</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"lightcast_job_postings.csv"</span>  <span class="co"># 确保文件在当前工作目录，或填写完整路径</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(file_path)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first few rows to verify the data structure</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Seaborn theme</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Job Posting Trends (Bar Chart)</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">"STATE_NAME"</span>, y<span class="op">=</span><span class="st">"POSTED"</span>, hue<span class="op">=</span><span class="st">"INDUSTRY"</span>, data<span class="op">=</span>df)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Job Posting Trends by State"</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"State"</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Job Postings"</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">"Industry"</span>)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         ID LAST_UPDATED_DATE  \
+0  1f57d95acf4dc67ed2819eb12f049f6a5c11782c        2024-09-06   
+1  0cb072af26757b6c4ea9464472a50a443af681ac        2024-08-02   
+2  85318b12b3331fa490d32ad014379df01855c557        2024-09-06   
+3  1b5c3941e54a1889ef4f8ae55b401a550708a310        2024-09-06   
+4  cb5ca25f02bdf25c13edfede7931508bfd9e858f        2024-06-19   
+
+      LAST_UPDATED_TIMESTAMP  DUPLICATES      POSTED     EXPIRED  DURATION  \
+0  2024-09-06 20:32:57.352 Z           0  2024-06-02  2024-06-08       6.0   
+1  2024-08-02 17:08:58.838 Z           0  2024-06-02  2024-08-01       NaN   
+2  2024-09-06 20:32:57.352 Z           1  2024-06-02  2024-07-07      35.0   
+3  2024-09-06 20:32:57.352 Z           1  2024-06-02  2024-07-20      48.0   
+4  2024-06-19 07:00:00.000 Z           0  2024-06-02  2024-06-17      15.0   
+
+             SOURCE_TYPES                                        SOURCES  \
+0       [\n  "Company"\n]                        [\n  "brassring.com"\n]   
+1     [\n  "Job Board"\n]                            [\n  "maine.gov"\n]   
+2     [\n  "Job Board"\n]                           [\n  "dejobs.org"\n]   
+3     [\n  "Job Board"\n]  [\n  "disabledperson.com",\n  "dejobs.org"\n]   
+4  [\n  "FreeJobBoard"\n]                       [\n  "craigslist.org"\n]   
+
+                                                 URL  ... NAICS_2022_2  \
+0  [\n  "https://sjobs.brassring.com/TGnewUI/Sear...  ...           44   
+1   [\n  "https://joblink.maine.gov/jobs/1085740"\n]  ...           56   
+2  [\n  "https://dejobs.org/dallas-tx/data-analys...  ...           52   
+3  [\n  "https://www.disabledperson.com/jobs/5948...  ...           52   
+4  [\n  "https://modesto.craigslist.org/sls/77475...  ...           99   
+
+                                   NAICS_2022_2_NAME NAICS_2022_3  \
+0                                       Retail Trade          441   
+1  Administrative and Support and Waste Managemen...          561   
+2                              Finance and Insurance          524   
+3                              Finance and Insurance          522   
+4                              Unclassified Industry          999   
+
+                              NAICS_2022_3_NAME NAICS_2022_4  \
+0               Motor Vehicle and Parts Dealers         4413   
+1           Administrative and Support Services         5613   
+2     Insurance Carriers and Related Activities         5242   
+3  Credit Intermediation and Related Activities         5221   
+4                         Unclassified Industry         9999   
+
+                                   NAICS_2022_4_NAME  NAICS_2022_5  \
+0  Automotive Parts, Accessories, and Tire Retailers         44133   
+1                                Employment Services         56132   
+2  Agencies, Brokerages, and Other Insurance Rela...         52429   
+3                   Depository Credit Intermediation         52211   
+4                              Unclassified Industry         99999   
+
+                            NAICS_2022_5_NAME NAICS_2022_6  \
+0  Automotive Parts and Accessories Retailers       441330   
+1                     Temporary Help Services       561320   
+2          Other Insurance Related Activities       524291   
+3                          Commercial Banking       522110   
+4                       Unclassified Industry       999999   
+
+                            NAICS_2022_6_NAME  
+0  Automotive Parts and Accessories Retailers  
+1                     Temporary Help Services  
+2                            Claims Adjusting  
+3                          Commercial Banking  
+4                       Unclassified Industry  
+
+[5 rows x 131 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: Could not interpret value `INDUSTRY` for `hue`. An entry with this name does not appear in `data`.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 1000x600 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>state_job_counts <span class="op">=</span> df.groupby(<span class="st">"STATE_NAME"</span>)[<span class="st">"TITLE_NAME"</span>].count().reset_index()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>state_job_counts <span class="op">=</span> state_job_counts.sort_values(by<span class="op">=</span><span class="st">"TITLE_NAME"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">"STATE_NAME"</span>, y<span class="op">=</span><span class="st">"TITLE_NAME"</span>, data<span class="op">=</span>state_job_counts, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Job Posting Trends by State"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"State"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Job Postings"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>) </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\ch625\AppData\Local\Temp\ipykernel_11400\3708161179.py:7: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x="STATE_NAME", y="TITLE_NAME", data=state_job_counts, palette="viridis")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>state_job_counts <span class="op">=</span> df.groupby(<span class="st">"STATE_NAME"</span>)[<span class="st">"TITLE_NAME"</span>].count().reset_index()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>state_job_counts <span class="op">=</span> state_job_counts.sort_values(by<span class="op">=</span><span class="st">"TITLE_NAME"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>) </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">"STATE_NAME"</span>, y<span class="op">=</span><span class="st">"TITLE_NAME"</span>, data<span class="op">=</span>state_job_counts, palette<span class="op">=</span><span class="st">"viridis"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 States with Highest Job Postings"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"State"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Job Postings"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>) </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\ch625\AppData\Local\Temp\ipykernel_11400\1584174182.py:6: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x="STATE_NAME", y="TITLE_NAME", data=state_job_counts, palette="viridis")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>industry_job_counts <span class="op">=</span> df.groupby(<span class="st">"NAICS2_NAME"</span>)[<span class="st">"TITLE_NAME"</span>].count().reset_index()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>industry_job_counts <span class="op">=</span> industry_job_counts.sort_values(by<span class="op">=</span><span class="st">"TITLE_NAME"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">"NAICS2_NAME"</span>, y<span class="op">=</span><span class="st">"TITLE_NAME"</span>, data<span class="op">=</span>industry_job_counts, palette<span class="op">=</span><span class="st">"coolwarm"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 Industries with Highest Job Postings"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Industry"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of Job Postings"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\ch625\AppData\Local\Temp\ipykernel_11400\3675328489.py:5: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x="NAICS2_NAME", y="TITLE_NAME", data=industry_job_counts, palette="coolwarm")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">"NAICS2_NAME"</span>, y<span class="op">=</span><span class="st">"SALARY_TO"</span>, data<span class="op">=</span>df)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Salary Distribution by Industry"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Industry"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Salary (Max)"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设 df 是你已经加载的 DataFrame</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"EMPLOYMENT_TYPE_NAME"</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    employment_counts <span class="op">=</span> df[<span class="st">"EMPLOYMENT_TYPE_NAME"</span>].value_counts().reset_index()</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    employment_counts.columns <span class="op">=</span> [<span class="st">"Employment Type"</span>, <span class="st">"Count"</span>]</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    plt.pie(employment_counts[<span class="st">"Count"</span>], labels<span class="op">=</span>employment_counts[<span class="st">"Employment Type"</span>], autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>            startangle<span class="op">=</span><span class="dv">140</span>, colors<span class="op">=</span>sns.color_palette(<span class="st">"pastel"</span>))</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Employment Type Distribution"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Error: Column 'EMPLOYMENT_TYPE_NAME' not found in the dataset."</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"lightcast_job_postings.csv"</span>  </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(file_path)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>city_counts <span class="op">=</span> df[<span class="st">'CITY_NAME'</span>].value_counts().reset_index()</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>city_counts.columns <span class="op">=</span> [<span class="st">'CITY_NAME'</span>, <span class="st">'Job Count'</span>]</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter_geo(city_counts,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>                     locations<span class="op">=</span><span class="st">"CITY_NAME"</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                     locationmode<span class="op">=</span><span class="st">"USA-states"</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>                     size<span class="op">=</span><span class="st">"Job Count"</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                     title<span class="op">=</span><span class="st">"Job Postings Distribution Across Cities"</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                     projection<span class="op">=</span><span class="st">"natural earth"</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df[(df[<span class="st">'SALARY_FROM'</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (df[<span class="st">'SALARY_TO'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(df_salary, x<span class="op">=</span><span class="st">"SALARY_FROM"</span>, nbins<span class="op">=</span><span class="dv">50</span>, title<span class="op">=</span><span class="st">"Interactive Salary Distribution"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                   labels<span class="op">=</span>{<span class="st">"SALARY_FROM"</span>: <span class="st">"Salary Lower Bound"</span>},</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                   color_discrete_sequence<span class="op">=</span>[<span class="st">"blue"</span>])</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>fig.update_layout(xaxis_title<span class="op">=</span><span class="st">"Salary"</span>, yaxis_title<span class="op">=</span><span class="st">"Frequency"</span>, dragmode<span class="op">=</span><span class="st">"pan"</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-14" class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geopy.geocoders <span class="im">import</span> Nominatim</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Geopy is successfully installed!"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>city_counts <span class="op">=</span> df[<span class="st">'CITY_NAME'</span>].value_counts().reset_index()</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>city_counts.columns <span class="op">=</span> [<span class="st">'CITY_NAME'</span>, <span class="st">'Job Count'</span>]</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>geolocator <span class="op">=</span> Nominatim(user_agent<span class="op">=</span><span class="st">"geoapiExercises"</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_lat_lon(city):</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> geolocator.geocode(city <span class="op">+</span> <span class="st">", USA"</span>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> location:</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> pd.Series([location.latitude, location.longitude])</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.Series([<span class="va">None</span>, <span class="va">None</span>])</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>city_counts[[<span class="st">'Latitude'</span>, <span class="st">'Longitude'</span>]] <span class="op">=</span> city_counts[<span class="st">'CITY_NAME'</span>].<span class="bu">apply</span>(get_lat_lon)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>city_counts.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter_geo(city_counts, </span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>                     lat<span class="op">=</span><span class="st">"Latitude"</span>, </span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>                     lon<span class="op">=</span><span class="st">"Longitude"</span>, </span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>                     size<span class="op">=</span><span class="st">"Job Count"</span>, </span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>                     hover_name<span class="op">=</span><span class="st">"CITY_NAME"</span>,</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>                     title<span class="op">=</span><span class="st">"Job Postings Distribution Across Cities"</span>,</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>                     projection<span class="op">=</span><span class="st">"natural earth"</span>)</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>fig.update_layout(geo<span class="op">=</span><span class="bu">dict</span>(showcoastlines<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Geopy is successfully installed!</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>st.title(<span class="st">"Job Market Analysis"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>job_title <span class="op">=</span> st.selectbox(<span class="st">"Select a Job Title"</span>, df[<span class="st">'TITLE_NAME'</span>].unique())</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[df[<span class="st">'TITLE_NAME'</span>] <span class="op">==</span> job_title]</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(filtered_df, x<span class="op">=</span><span class="st">"SALARY_FROM"</span>, nbins<span class="op">=</span><span class="dv">30</span>, title<span class="op">=</span><span class="ss">f"Salary Distribution for </span><span class="sc">{</span>job_title<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>st.plotly_chart(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2025-02-17 18:10:20.415 
+  Warning: to view this Streamlit app on a browser, run it with the following
+  command:
+
+    streamlit run c:\Users\ch625\anaconda3\Lib\site-packages\ipykernel_launcher.py [ARGUMENTS]
+2025-02-17 18:10:20.432 Session state does not function when running a script without `streamlit run`</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>DeltaGenerator()</code></pre>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
