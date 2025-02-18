@@ -9,13 +9,13 @@ format:
     toc: true
 ---
 
-**Introduction**
+# **Introduction**
 
 AI is completely disrupting various industries, and it makes us all wondering about what this will mean for jobs. Although some sectors are gaining more jobs due to AI automation, others are trimming staff. In the middle of all this, job seekers definitely need to get a grip on which jobs are emerging in the AI era and what they need to be training for.
 
 Therefore, to begin with, we need to look at the trends in the job market for AI jobs and normal jobs. This research is all about determining whether AI is indeed creating more jobs or simply eliminating the traditional ones, as well as which sectors are being boosted by it, and what qualifications are required for AI jobs versus the normal ones. AI will probably create new career paths while reconfiguring existing ones [@soueidan2024impact].By examining employment trends, pay comparisons, and skill demand, we want to offer some advice on how people can prepare for the evolving workforce.
 
-**Market Trends**
+# **Market Trends**
 
 AI is generating jobs and causing some effects in fields like healthcare, finance, and technology. In healthcare, they're using AI to simplify diagnoses, discover new drugs, and tailor medicine to individuals, which is creating more demand for those familiar with AI in medicine (Medium, 2024). In finance, they're using AI for fraud detection, risk assessment, and high-frequency trading, so there's greater demand for data analysts and machine learning specialists too (Globalization Partners, 2024).
 
@@ -25,7 +25,7 @@ AI jobs also get paid much more than average. If we look at fields like data sci
 
 Companies are indeed searching for AI professionals in areas like machine learning, cybersecurity, and automation. However, since there is a shortage of qualified AI professionals, those who have AI skills can command relatively decent salaries and perks. New industries like fintech and AI-driven healthcare are booming with job growth, which is a positive development for anyone who has AI-related skills (Medium, 2024).
 
-**Skill analysis**
+# **Skill analysis**
 
 The demand for AI skills grew 4 times over the period from 2010 to 2019. Firms are striving to hire more employees with AI-related skills, especially in the last three years, and the demand is still gaining momentum [@ai_labor_market_2021].  AI skills are important for technical positions. What’s more, these skills can provide a competitive salary advantage in managerial positions. We can focus on both technical and non-technical skills required for AI related jobs and analyze their importance in the job market.
 
@@ -33,12 +33,196 @@ For technical skills, Python, R and Java are the most frequently used AI tools f
 
 For non-technical skills, translating complex AI texts, some concepts and models into understandable language for administrators is one of the most important abilities. People should follow emerging AI trends, new algorithms, and evolving technologies and continue learning new AI tools and adjusting strategies for the company. 
 
-**Career Strategy Recommendations**
+# **Career Strategy Recommendations**
 
 A large number of ready AI tools, mainly in the Machine Learning (ML) field that has dominated the last decades of 21st century, offer opportunities to businesses and organizations to get involved and built machine learning solutions for their needs and customers[@ai_economics_2023].  CFA and FRM courses provide knowledge in financial and risk management. To enhance AI deployment capabilities, professionals can get certifications such as AWS Certified Machine Learning – Specialty, Microsoft Azure AI Engineer Associate, and Google Cloud Professional Data Engineer. These certifications provide whole framework of building, deploying, and managing AI solutions on cloud platforms. Professionals looking to excel in AI and data-driven fields should develop strong proficiency in programming and data manipulation, particularly with Python, SQL, R, and Spark. Lastly, learning something in big data processing such as Hadoop, Kubernetes, and MLOps can help company process data efficiently.
 
 While AI is emerging in many different industries, non-AI remains, particularly in fields that combine AI with traditional tools. Industries such as finance, healthcare, manufacturing, and marketing still require professionals about financials domaintly, even if AI plays a supporting role. Instead of fully changing to AI, professionals in finance, project management, healthcare, and marketing can still enhance their competitiveness by gaining AI and other data-driven skills. However, for those who are seeking higher salaries, transitioning into AI-related postions can definitely be highly beneficial.
 
+# **Personal career strategic plan**
+
+**Liyang Zhou**
+
+Target position: Market Research Analyst
+
+Target Industry: Automotive Industry
+
+Step 1: Skills to Learn
+
+Goal: In the next 6 months, improve market analysis skills and master the fundamentals of data analysis and machine learning.
+
+Skills Learning:
+
+• Tools: Master Power BI, Excel, SQL, Python & R for data processing and visualization.
+
+• Familiar with SWOT analysis and KPI monitoring for industry competition analysis and market positioning.
+
+• Learning Data-Driven Decision Making
+
+Step 2: Networking Strategies
+
+Objective: To build industry contacts and obtain more career development opportunities related to market research.
+
+Action Plan:
+
+• Connect with 5-10 market research professionals in your field on LinkedIn.
+
+• Attend the Boston university career fair to network with potential employers.
+
+Step 3: Target Companies
+
+Objective: Apply for and enter an automotive related market research position within 6 months, focusing on market data analysis and consumer behavior research.
+
+Target company
+
+1.Tesla (Automotive Market Analyst)
+
+2.BMW (Consumer Trends Researcher)
+
+3.NIO (New Energy Vehicle Market Analyst)
+
+Application Strategy:
+
+• Improve your chances of being interviewed by applying for targeted jobs through internal recommendations on LinkedIn.
+
+• Adjust your resume to highlight experience in analytical projects in relevant industries.
+
+**Yutong Qian**
+
+Step1 Skills to Learn
+
+Goal: For working in strategy and decision, I should strengthen business and financial analytics skills.
+
+Skills to Learn: 
+
+Tools: Master SQL, Python, R, Excel, and Power BI for data cleaning, processing and visualizing.
+
+Courses: The courses I can learn in BU classes.
+
+Decision-Making Strategies: Learn framework for data processing in order to improve working efficiency in strategy and making decisions.
+
+Other Skills: Improving communication skills and writing are crucial when I working with a team. 
+
+Step2 Networking Strategies
+
+Goal: I think that enlarging horizon in business analytics by finding financial professors helps is crucial for searching for more job opportunities.
+Action Plan: 
+
+Participate in discussions in Business Analytics & Financial Analysis Groups. Connecting classmates or other alumni can help us for business experience and advice. Also, asking advisors for help when I prepare my resume for job application. 
+
+Step3 Target Companies
+
+Goal: I can focus on industries that associated with both business analytics and management accounting backgrounds in future, for example, a business analyst, financial analyst, or data analyst position in a financial and consulting company or others.
+
+Target Companies and Positions:
+
+Amazon (Financial & Business Intelligence Analyst)
+
+Google (Business/Data Analyst, Finance & Strategy)
+
+Deloitte (Financial Advisory & Data Analytics Consultant)
+
+Application Strategies:
+
+Get more experience through internships will help me enhance my problem-solving skills and make me become more competitive when facing with job application.
+
+**Mulai Jiang**
+
+Target Position: Financial Data Analyst
+
+Target Industry: Fintech & Investment Banking
+
+Step 1: Skills to Learn
+
+Goal:
+
+Within the next two years, enhance technical expertise in financial data analytics and deepen knowledge of financial markets.
+
+Key Skills to Acquire:
+
+Tools Mastery: Python, SQL, and machine learning for data processing, financial modeling, and predictive analytics.
+
+Financial Market Knowledge: Portfolio optimization, risk modeling, financial forecasting, and investment analysis.
+
+Certifications: Prepare for CFA or FRM to strengthen financial expertise and industry credibility.
+
+Step 2: Networking Strategies
+
+Objective:
+
+Expand professional connections and gain insights into career opportunities in financial data analytics.
+
+Action Plan:
+
+Connect with 5-10 financial data analysts, fintech professionals, and investment bankers on LinkedIn.
+
+Attend industry conferences, networking events, and career fairs focused on fintech and investment banking.
+
+Conduct informational interviews with professionals in quantitative modeling, risk analytics, and financial forecasting roles.
+
+Step 3: Target Companies and Positions:
+
+Deloitte (Financial Modeling & Risk Consulting)
+
+PwC (Market Risk & Compliance Analytics)
+
+Bloomberg  (Financial Market Trends & Data Visualization)
+
+**Chao Huang**
+
+Target Position: Market Research Analyst
+
+Target Industry: Healthcare Consulting
+
+Step 1: Skills to Learn
+
+Goal:
+
+Within the next 6 months, enhance market analysis expertise and develop strong proficiency in data analytics and machine learning fundamentals.
+
+Key Skills to Acquire:
+
+Tools Mastery: Power BI, Excel, SQL, Python, and R for data processing and visualization.
+
+Market Analysis Techniques: Familiarity with SWOT analysis, KPI monitoring, and competitive benchmarking in the healthcare sector.
+
+Data-Driven Decision-Making: Understanding how to leverage data for business insights and strategic planning.
+
+Step 2: Networking Strategies
+
+Objective:
+
+Build industry connections and explore career advancement opportunities in market research within healthcare consulting.
+
+Action Plan:
+
+Connect with 5-10 healthcare market research professionals on LinkedIn.
+
+Attend Boston University career fairs and industry conferences focused on healthcare consulting.
+
+Engage in informational interviews with professionals working at top healthcare consulting firms.
+
+Step 3: Target Companies
+
+Objective:
+
+Secure a market research analyst role in the healthcare consulting industry within 6 months, focusing on market data analysis and healthcare consumer behavior trends.
+
+Target Companies:
+
+McKinsey & Company (Healthcare Market Research Analyst)
+
+IQVIA (Healthcare Data & Market Insights Analyst)
+
+ZS Associates (Healthcare Consulting Market Analyst)
+
+Application Strategy:
+
+Increase interview opportunities by leveraging internal referrals on LinkedIn.
+
+Optimize resume to emphasize market research experience, data analytics projects, and industry-relevant case studies.
+
+Gain exposure to real-world healthcare consulting cases by participating in related projects or competitions.
 
 ```{python}
 import pandas as pd 
