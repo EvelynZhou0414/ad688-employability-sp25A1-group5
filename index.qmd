@@ -313,14 +313,16 @@ else:
 ```
 
 ```{python}
- import plotly.express as px
+import pandas as pd
+import plotly.express as px
 
-df = pd.read_csv("lightcast_job_postings.csv")
+
+
 df_salary = df[(df['SALARY_FROM'] > 0) & (df['SALARY_TO'] > 0)]
 
 fig = px.histogram(df_salary, x="SALARY_FROM", nbins=50, title="Interactive Salary Distribution",
-                   labels={"SALARY_FROM": "Salary Lower Bound"},
-                   color_discrete_sequence=["blue"])
+        labels={"SALARY_FROM": "Salary Lower Bound"},
+        color_discrete_sequence=["blue"])
 fig.update_layout(xaxis_title="Salary", yaxis_title="Frequency", dragmode="pan")
 fig.show()
 ```
