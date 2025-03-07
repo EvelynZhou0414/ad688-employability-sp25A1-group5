@@ -29,6 +29,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import missingno as msno
 import plotly.express as px
+import seaborn as sns
 
 df = pd.read_csv("lightcast_job_postings.csv")
 df.head()
@@ -71,8 +72,15 @@ The line chart can show the trend more clearly and is used to observe whether AI
 ```{python}
 top_20_industries = df["NAICS2_NAME"].value_counts().nlargest(20)
 
-fig = px.bar(top_20_industries, title="Job Postings by Industry")
-fig.show()
+plt.figure(figsize=(10, 6))
+top_20_industries.plot(kind="bar", color="steelblue")
+plt.title("Job Postings by Industry")
+plt.xlabel("Industry")
+plt.ylabel("Job Postings")
+plt.xticks(rotation=45, ha="right")
+plt.grid(axis="y", linestyle="--", alpha=0.7)
+
+plt.show()
 ```
 Bar Chart: Job Postings by Industry
 Key Findings
@@ -93,10 +101,15 @@ salary_columns = ["Salary", "WAGE", "COMPENSATION", "HOURLY_RATE"]
 salary_col = next((col for col in df.columns if col in salary_columns), None)
 
 
-fig = px.box(df_filtered, x="NAICS_2022_6_NAME", y=salary_col, 
-             title="Salary Distribution by Industry", points="outliers")
-fig.update_layout(xaxis_tickangle=-45)
-fig.show()
+plt.figure(figsize=(12, 6))
+sns.boxplot(data=df_filtered, x="NAICS_2022_6_NAME", y=salary_col)
+
+plt.title("Salary Distribution by Industry", fontsize=14)
+plt.xticks(rotation=45, ha="right")
+plt.xlabel("Industry")
+plt.ylabel("Salary")
+
+plt.show()
 ```
 Boxplot: Salary Distribution by Industry
 Key Findings
@@ -111,8 +124,14 @@ Industry choice is critical to salary growth, and job seekers can choose a caree
 ```{python}
 df["REMOTE_TYPE_NAME"] = df["REMOTE_TYPE_NAME"].replace({None: "On-Site", "[None]": "On-Site"})
 
-fig = px.pie(df, names="REMOTE_TYPE_NAME", title="Remote vs. On-Site Jobs")
-fig.show()
+remote_counts = df["REMOTE_TYPE_NAME"].value_counts()
+
+plt.figure(figsize=(8, 6))
+plt.pie(remote_counts, labels=remote_counts.index, autopct='%1.1f%%', startangle=140, colors=['#636EFA', '#EF553B', '#00CC96', '#AB63FA'])
+
+plt.title("Remote vs. On-Site Jobs", fontsize=14)
+
+plt.show()
 ```
 Pie Chart: Remote vs. On-Site Jobs
 Key Findings
