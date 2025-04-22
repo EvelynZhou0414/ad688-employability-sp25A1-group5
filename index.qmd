@@ -3,10 +3,11 @@ title: "Research Introduction: AI vs. Non-AI Careers"
 author: "Group 5"
 date: today
 format: html
-    bibliography: references.bib
-    csl: csl/econometrica.csl
-    toc: true
+bibliography: references.bib
+csl: csl/econometrica.csl
+toc: true
 ---
+
 
 # **Introduction**
 
