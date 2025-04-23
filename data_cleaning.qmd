@@ -1,0 +1,30 @@
+```{python}
+import pandas as pd 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("lightcast_job_postings.csv")
+df.info()
+print(df.head())
+
+#replace the missing Values
+missing_values = df.isnull().sum()
+missing_percentage = (missing_values / len(df)) * 100
+missing_data = pd.DataFrame({"Missing Values": missing_values, "Percentage": missing_percentage})
+missing_data = missing_data[missing_data["Missing Values"] > 0]
+missing_data = missing_data.sort_values(by="Percentage", ascending=False)
+
+salary_median = df["SALARY"].median()
+df["SALARY"].fillna(salary_median, inplace=True)
+
+#convert time columns
+date_columns = ["LAST_UPDATED_DATE", "LAST_UPDATED_TIMESTAMP", "POSTED", "EXPIRED"]
+for col in date_columns:
+    if col in df.columns:  
+        df[col] = pd.to_datetime(df[col], errors="coerce", utc=True) 
+
+#Extract Data
+selected_columns = df[['TITLE', 'SALARY', 'SALARY_FROM', 'SALARY_TO', 'SKILLS']]
+print(selected_columns.head())
+selected_columns.to_csv('Extracted_data.csv', index=False)
+```
