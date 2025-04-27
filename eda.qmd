@@ -1,38 +1,20 @@
 **Exploratory Data Analysis & Visualization**
 
 ```{python}
-import pandas as pd 
+import pandas as pd
+%pip install kaleido
+import kaleido
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 df = pd.read_csv("lightcast_job_postings.csv")
-
-state_job_counts = df.groupby("STATE_NAME")["TITLE_NAME"].count().reset_index()
-state_job_counts = state_job_counts.sort_values(by="TITLE_NAME", ascending=False).head(10) 
-sns.set_theme(style="whitegrid")
-
-plt.figure(figsize=(12, 6))
-sns.barplot(x="STATE_NAME", y="TITLE_NAME", data=state_job_counts, palette="viridis")
-
-plt.title("Top 10 States with Highest Job Postings", fontsize=14)
-plt.xlabel("State", fontsize=12)
-plt.ylabel("Number of Job Postings", fontsize=12)
-plt.xticks(rotation=45) 
-plt.show()
+print(df.columns.tolist())
 ```
 
 ```{python}
-industry_job_counts = df.groupby("NAICS2_NAME")["TITLE_NAME"].count().reset_index()
-industry_job_counts = industry_job_counts.sort_values(by="TITLE_NAME", ascending=False).head(10)
-
-plt.figure(figsize=(12, 6))
-sns.barplot(x="NAICS2_NAME", y="TITLE_NAME", data=industry_job_counts, palette="coolwarm")
-
-plt.title("Top 10 Industries with Highest Job Postings", fontsize=14)
-plt.xlabel("Industry", fontsize=12)
-plt.ylabel("Number of Job Postings", fontsize=12)
-plt.xticks(rotation=45)
-plt.show()
+import pandas as pd
+df = pd.read_csv("lightcast_job_postings.csv")
+df.info()
+df.head()
 ```
 
 ```{python}
@@ -60,16 +42,299 @@ else:
 ```
 
 ```{python}
-import pandas as pd
+import plotly.io as pio
+pio.templates.default = 'plotly_white'
+```
+
+```{python}
 import plotly.express as px
 
+fig_box = px.box(df, y='SALARY', points='all', title='Salary Distribution Box Plot')
+fig_box.write_image("figures/salary_box.png")
+fig_box.show()
 
+fig_hist = px.histogram(df, x='SALARY', nbins=50, title='Salary Distribution Histogram')
+fig_hist.write_image("figures/salary_histogram.png")
+fig_hist.show()
+```
+
+
+```{python}
+top_industries = df['NAICS2_NAME'].value_counts().nlargest(20)
+
+fig_ind = px.bar(top_industries,
+                 x=top_industries.index, y=top_industries.values,
+                 labels={'x': 'NAICS2_NAME', 'y': 'Number of Postings'},
+                 title='Top 20 Industries with Most Job Postings')
+fig_ind.update_layout(xaxis_tickangle=-45)
+fig_ind.write_image("figures/top_industries.png")
+fig_ind.show()
+```
+
+
+```{python}
+import plotly.express as px
+
+# 填补缺失值
+df['REMOTE_TYPE_NAME'] = df['REMOTE_TYPE_NAME'].fillna('On-Site')
+
+# 先画饼图
+fig_remote = px.pie(df, names='REMOTE_TYPE_NAME', title='Remote Work Type Distribution')
+
+# 保存到 figures 文件夹
+fig_remote.write_image("figures/remote_pie.png")
+
+# 显示
+fig_remote.show()
+```
+
+
+```{python}
+selected_columns = df[['TITLE', 'SALARY', 'SALARY_FROM', 'SALARY_TO', 'SKILLS']]
+print(selected_columns.head())
+selected_columns.to_csv('Extracted_data.csv', index=False)
+```
+
+
+```{python}
+missing_values = df.isnull().sum()
+
+missing_percentage = (missing_values / len(df)) * 100
+
+missing_data = pd.DataFrame({"Missing Values": missing_values, "Percentage": missing_percentage})
+missing_data = missing_data[missing_data["Missing Values"] > 0]
+
+missing_data = missing_data.sort_values(by="Percentage", ascending=False)
+
+
+salary_median = df["SALARY"].median()
+
+df["SALARY"].fillna(salary_median, inplace=True)
+
+print("Missing values in SALARY after filling:", df["SALARY"].isnull().sum())
+
+date_columns = ["LAST_UPDATED_DATE", "LAST_UPDATED_TIMESTAMP", "POSTED", "EXPIRED"]
+
+for col in date_columns:
+    if col in df.columns:
+        df[col] = pd.to_datetime(df[col], errors="coerce", utc=True)
+
+print(df[["LAST_UPDATED_DATE", "LAST_UPDATED_TIMESTAMP", "POSTED", "EXPIRED"]].head(10))
+```
+
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Generate sample data (simulating original dataset)
+data = {
+    "STATE_NAME": ["California", "Texas", "New York", "Florida", "Illinois"],
+    "JOB_POSTINGS": [12000, 9500, 8700, 7500, 6700],
+    "REMOTE_JOBS": [4500, 3800, 3200, 2900, 2500],
+    "SALARY_FROM": [60000, 55000, 58000, 53000, 52000],
+    "SALARY_TO": [120000, 110000, 115000, 105000, 100000],
+    "INDUSTRY": ["Tech", "Finance", "Healthcare", "Retail", "Manufacturing"]
+}
+
+df = pd.DataFrame(data)
+
+# Set Seaborn theme
+sns.set_theme(style="whitegrid")
+
+# 1. Job Posting Trends (Bar Chart)
+plt.figure(figsize=(10, 6))
+sns.barplot(x="STATE_NAME", y="JOB_POSTINGS", data=df)
+plt.title("Job Posting Trends by State")
+plt.xlabel("State")
+plt.ylabel("Number of Job Postings")
+plt.xticks(rotation=45)
+plt.legend(title="Industry")
+
+plt.tight_layout()
+plt.savefig("figures/job_postings_by_state.png")
+plt.show()
+```
+
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Read dataset from local file
+file_path = "lightcast_job_postings.csv"
+df = pd.read_csv(file_path)
+
+# Inspect the first few rows to verify the data structure
+print(df.head())
+
+# Set Seaborn theme
+sns.set_theme(style="whitegrid")
+
+# 1. Job Posting Trends (Bar Chart)
+plt.figure(figsize=(10, 6))
+sns.barplot(x="STATE_NAME", y="POSTED", data=df)
+plt.title("Job Posting Trends by State")
+plt.xlabel("State")
+plt.ylabel("Number of Job Postings")
+plt.xticks(rotation=45)
+plt.legend(title="Industry")
+plt.savefig("figures/job_posting_trends_state_industry.png", dpi=300, bbox_inches="tight")
+
+plt.show()
+```
+
+
+```{python}
+state_job_counts = df.groupby("STATE_NAME")["TITLE_NAME"].count().reset_index()
+state_job_counts = state_job_counts.sort_values(by="TITLE_NAME", ascending=False)
+
+sns.set_theme(style="whitegrid")
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x="STATE_NAME", y="TITLE_NAME", data=state_job_counts, palette="viridis")
+
+plt.title("Job Posting Trends by State", fontsize=14)
+plt.xlabel("State", fontsize=12)
+plt.ylabel("Number of Job Postings", fontsize=12)
+plt.xticks(rotation=45)
+plt.savefig("figures/job_postings_by_state_all.png", dpi=300, bbox_inches="tight")
+
+plt.show()
+```
+
+
+```{python}
+state_job_counts = df.groupby("STATE_NAME")["TITLE_NAME"].count().reset_index()
+state_job_counts = state_job_counts.sort_values(by="TITLE_NAME", ascending=False).head(10)
+sns.set_theme(style="whitegrid")
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x="STATE_NAME", y="TITLE_NAME", data=state_job_counts, palette="viridis")
+
+plt.title("Top 10 States with Highest Job Postings", fontsize=14)
+plt.xlabel("State", fontsize=12)
+plt.ylabel("Number of Job Postings", fontsize=12)
+plt.xticks(rotation=45)
+plt.savefig("figures/top10_states_job_postings.png", dpi=300, bbox_inches="tight")
+
+plt.show()
+```
+
+
+```{python}
+industry_job_counts = df.groupby("NAICS2_NAME")["TITLE_NAME"].count().reset_index()
+industry_job_counts = industry_job_counts.sort_values(by="TITLE_NAME", ascending=False).head(10)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x="NAICS2_NAME", y="TITLE_NAME", data=industry_job_counts, palette="coolwarm")
+
+plt.title("Top 10 Industries with Highest Job Postings", fontsize=14)
+plt.xlabel("Industry", fontsize=12)
+plt.ylabel("Number of Job Postings", fontsize=12)
+plt.xticks(rotation=45)
+plt.savefig("figures/top10_industries_job_postings.png", dpi=300, bbox_inches="tight")
+
+plt.show()
+```
+
+
+```{python}
+plt.figure(figsize=(12, 6))
+sns.boxplot(x="NAICS2_NAME", y="SALARY_TO", data=df)
+plt.title("Salary Distribution by Industry", fontsize=14)
+plt.xlabel("Industry", fontsize=12)
+plt.ylabel("Salary (Max)", fontsize=12)
+plt.xticks(rotation=45)
+plt.savefig("figures/salary_boxplot_by_industry.png", dpi=300, bbox_inches="tight")
+
+plt.show()
+```
+
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+if "EMPLOYMENT_TYPE_NAME" in df.columns:
+    employment_counts = df["EMPLOYMENT_TYPE_NAME"].value_counts().reset_index()
+    employment_counts.columns = ["Employment Type", "Count"]
+
+    plt.figure(figsize=(8, 8))
+    plt.pie(employment_counts["Count"], labels=employment_counts["Employment Type"], autopct='%1.1f%%',
+            startangle=140, colors=sns.color_palette("pastel"))
+    plt.title("Employment Type Distribution", fontsize=14)
+    plt.savefig("figures/employment_type_pie_chart.png", dpi=300, bbox_inches="tight")
+
+    plt.show()
+else:
+    print("Error: Column 'EMPLOYMENT_TYPE_NAME' not found in the dataset.")
+
+
+```
+
+
+```{python}
+import plotly.express as px
+import pandas as pd
+
+file_path = "lightcast_job_postings.csv"
+df = pd.read_csv(file_path)
+city_counts = df['CITY_NAME'].value_counts().reset_index()
+city_counts.columns = ['CITY_NAME', 'Job Count']
+
+
+fig = px.scatter_geo(city_counts,
+                     locations="CITY_NAME",
+                     locationmode="USA-states",
+                     size="Job Count",
+                     title="Job Postings Distribution Across Cities",
+                     projection="natural earth")
+fig.write_image("figures/job_postings_map.png", scale=2)
+
+fig.show()
+```
+
+
+```{python}
+import plotly.express as px
 
 df_salary = df[(df['SALARY_FROM'] > 0) & (df['SALARY_TO'] > 0)]
 
 fig = px.histogram(df_salary, x="SALARY_FROM", nbins=50, title="Interactive Salary Distribution",
-        labels={"SALARY_FROM": "Salary Lower Bound"},
-        color_discrete_sequence=["blue"])
+                   labels={"SALARY_FROM": "Salary Lower Bound"},
+                   color_discrete_sequence=["blue"])
 fig.update_layout(xaxis_title="Salary", yaxis_title="Frequency", dragmode="pan")
+fig.write_image("figures/salary_distribution_histogram.png", scale=2)
+
 fig.show()
 ```
+
+
+
+
+
+```{python}
+!pip install streamlit
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+
+st.title("Job Market Analysis")
+
+job_title = st.selectbox("Select a Job Title", df['TITLE_NAME'].unique())
+
+filtered_df = df[df['TITLE_NAME'] == job_title]
+
+fig = px.histogram(filtered_df, x="SALARY_FROM", nbins=30, title=f"Salary Distribution for {job_title}")
+st.plotly_chart(fig)
+
+fig.write_image(f"figures/salary_distribution_{job_title}.png", scale=2)
+
+```
+
+
