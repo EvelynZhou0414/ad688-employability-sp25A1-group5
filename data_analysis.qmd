@@ -14,7 +14,7 @@ author:
   - name: Yutong Qian
     affiliation: Boston University
 
-bibliography: References.bib
+bibliography: references.bib
 csl: csl/econometrica.csl
 format: 
   html:
