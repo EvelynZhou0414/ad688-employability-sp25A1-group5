@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Group 5">
-<meta name="dcterms.date" content="2025-04-27">
 
-<title>Job Market Analysis 2024 - Research Introduction: AI vs.&nbsp;Non-AI Careers</title>
+<title>Job Market Analysis 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -109,7 +122,7 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -125,7 +138,7 @@ div.csl-indent {
 <span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./skill_gap_analysis.html"> 
+    <a class="nav-link active" href="./skill_gap_analysis.html" aria-current="page"> 
 <span class="menu-text">Skill Gap Analysis</span></a>
   </li>  
   <li class="nav-item">
@@ -148,181 +161,111 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#market-trends" id="toc-market-trends" class="nav-link active" data-scroll-target="#market-trends"><strong>Market Trends</strong></a></li>
-  <li><a href="#skill-analysis" id="toc-skill-analysis" class="nav-link" data-scroll-target="#skill-analysis"><strong>Skill analysis</strong></a></li>
-  <li><a href="#career-strategy-recommendations" id="toc-career-strategy-recommendations" class="nav-link" data-scroll-target="#career-strategy-recommendations"><strong>Career Strategy Recommendations</strong></a></li>
-  <li><a href="#personal-career-strategic-plan" id="toc-personal-career-strategic-plan" class="nav-link" data-scroll-target="#personal-career-strategic-plan"><strong>Personal career strategic plan</strong></a>
-  <ul class="collapse">
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Research Introduction: AI vs.&nbsp;Non-AI Careers</h1>
+
+
+
+<div id="cf09cb19" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas matplotlib seaborn</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas in /home/ubuntu/.local/lib/python3.10/site-packages (2.2.3)
+Requirement already satisfied: matplotlib in /usr/lib/python3/dist-packages (3.5.1)
+Requirement already satisfied: seaborn in /home/ubuntu/.local/lib/python3.10/site-packages (0.13.2)
+Requirement already satisfied: numpy&gt;=1.22.4 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (1.24.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2025.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2025.1)
+Requirement already satisfied: six&gt;=1.5 in /home/ubuntu/.local/lib/python3.10/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+
+[notice] A new release of pip is available: 25.0.1 -&gt; 25.1
+[notice] To update, run: python3 -m pip install --upgrade pip</code></pre>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Group 5 </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 27, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="market-trends" class="level1">
-<h1><strong>Market Trends</strong></h1>
-<p>AI is generating jobs and causing some effects in fields like healthcare, finance, and technology. In healthcare, they’re using AI to simplify diagnoses, discover new drugs, and tailor medicine to individuals, which is creating more demand for those familiar with AI in medicine (Medium, 2024). In finance, they’re using AI for fraud detection, risk assessment, and high-frequency trading, so there’s greater demand for data analysts and machine learning specialists too (Globalization Partners, 2024).</p>
-<p>Although AI has created many new positions in some fields, it’s also making individuals to lose their jobs in some industries based on the same old repetitive and manual work. These days retail and manufacturing businesses are losing traditional jobs since robots and automation, some of which uses AI, are doing the human work (Innopharma Education, 2024). And what about customer support roles? Well, they’re at risk too since AI chatbots and virtual assistants are responding to more and more customer inquiries. They are creating less need for human representatives (Nexford, 2024).</p>
-<p>AI jobs also get paid much more than average. If we look at fields like data science, AI engineering, and cloud computing, those professionals make a lot more than professionals like accounting, mechanical engineering, or retail. In addition, AI job postings are still increasing, especially in tech hubs like Silicon Valley, Boston, and Austin, where companies are especially willing to recruit AI talent (Globalization Partners, 2024).</p>
-<p>Companies are indeed searching for AI professionals in areas like machine learning, cybersecurity, and automation. However, since there is a shortage of qualified AI professionals, those who have AI skills can command relatively decent salaries and perks. New industries like fintech and AI-driven healthcare are booming with job growth, which is a positive development for anyone who has AI-related skills (Medium, 2024).</p>
-</section>
-<section id="skill-analysis" class="level1">
-<h1><strong>Skill analysis</strong></h1>
-<p>The demand for AI skills grew 4 times over the period from 2010 to 2019. Firms are striving to hire more employees with AI-related skills, especially in the last three years, and the demand is still gaining momentum <span class="citation" data-cites="ai_labor_market_2021">(<a href="#ref-ai_labor_market_2021" role="doc-biblioref">Acemoglu and Restrepo (2021)</a>)</span>. AI skills are important for technical positions. What’s more, these skills can provide a competitive salary advantage in managerial positions. We can focus on both technical and non-technical skills required for AI related jobs and analyze their importance in the job market.</p>
-<p>For technical skills, Python, R and Java are the most frequently used AI tools for data analysis. When a company needs to clean large datasets, employees or employers who are familiar with data modeling, data warehousing, and big data processing can use Hadoop, Spark, and SQL database tools to solve problems. Employees who have designing experience can do better when optimizing machine learning models for different applications. TensorFlow, PyTorch, and scikit-learn can be applied in training and optimizing AI models. In the aspect of AI Security, all corporations should be aware of AI-related security threats to prevent from attacks in AI models, so they can develop strategies in advance to ensure AI usage.</p>
-<p>For non-technical skills, translating complex AI texts, some concepts and models into understandable language for administrators is one of the most important abilities. People should follow emerging AI trends, new algorithms, and evolving technologies and continue learning new AI tools and adjusting strategies for the company.</p>
-</section>
-<section id="career-strategy-recommendations" class="level1">
-<h1><strong>Career Strategy Recommendations</strong></h1>
-<p>A large number of ready AI tools, mainly in the Machine Learning (ML) field that has dominated the last decades of 21st century, offer opportunities to businesses and organizations to get involved and built machine learning solutions for their needs and customers<span class="citation" data-cites="ai_economics_2023">(<a href="#ref-ai_economics_2023" role="doc-biblioref">Jones and Tonetti (2023)</a>)</span>. CFA and FRM courses provide knowledge in financial and risk management. To enhance AI deployment capabilities, professionals can get certifications such as AWS Certified Machine Learning – Specialty, Microsoft Azure AI Engineer Associate, and Google Cloud Professional Data Engineer. These certifications provide whole framework of building, deploying, and managing AI solutions on cloud platforms. Professionals looking to excel in AI and data-driven fields should develop strong proficiency in programming and data manipulation, particularly with Python, SQL, R, and Spark. Lastly, learning something in big data processing such as Hadoop, Kubernetes, and MLOps can help company process data efficiently.</p>
-<p>While AI is emerging in many different industries, non-AI remains, particularly in fields that combine AI with traditional tools. Industries such as finance, healthcare, manufacturing, and marketing still require professionals about financials domaintly, even if AI plays a supporting role. Instead of fully changing to AI, professionals in finance, project management, healthcare, and marketing can still enhance their competitiveness by gaining AI and other data-driven skills. However, for those who are seeking higher salaries, transitioning into AI-related postions can definitely be highly beneficial.</p>
-</section>
-<section id="personal-career-strategic-plan" class="level1">
-<h1><strong>Personal career strategic plan</strong></h1>
-<p><strong>Liyang Zhou</strong></p>
-<p>Target position: Market Research Analyst</p>
-<p>Target Industry: Automotive Industry</p>
-<p>Step 1: Skills to Learn</p>
-<p>Goal: In the next 6 months, improve market analysis skills and master the fundamentals of data analysis and machine learning.</p>
-<p>Skills Learning:</p>
-<p>• Tools: Master Power BI, Excel, SQL, Python &amp; R for data processing and visualization.</p>
-<p>• Familiar with SWOT analysis and KPI monitoring for industry competition analysis and market positioning.</p>
-<p>• Learning Data-Driven Decision Making</p>
-<p>Step 2: Networking Strategies</p>
-<p>Objective: To build industry contacts and obtain more career development opportunities related to market research.</p>
-<p>Action Plan:</p>
-<p>• Connect with 5-10 market research professionals in your field on LinkedIn.</p>
-<p>• Attend the Boston university career fair to network with potential employers.</p>
-<p>Step 3: Target Companies</p>
-<p>Objective: Apply for and enter an automotive related market research position within 6 months, focusing on market data analysis and consumer behavior research.</p>
-<p>Target company</p>
-<p>1.Tesla (Automotive Market Analyst)</p>
-<p>2.BMW (Consumer Trends Researcher)</p>
-<p>3.NIO (New Energy Vehicle Market Analyst)</p>
-<p>Application Strategy:</p>
-<p>• Improve your chances of being interviewed by applying for targeted jobs through internal recommendations on LinkedIn.</p>
-<p>• Adjust your resume to highlight experience in analytical projects in relevant industries.</p>
-<p><strong>Yutong Qian</strong></p>
-<p>Step1 Skills to Learn</p>
-<p>Goal: For working in strategy and decision, I should strengthen business and financial analytics skills.</p>
-<p>Skills to Learn:</p>
-<p>Tools: Master SQL, Python, R, Excel, and Power BI for data cleaning, processing and visualizing.</p>
-<p>Courses: The courses I can learn in BU classes.</p>
-<p>Decision-Making Strategies: Learn framework for data processing in order to improve working efficiency in strategy and making decisions.</p>
-<p>Other Skills: Improving communication skills and writing are crucial when I working with a team.</p>
-<p>Step2 Networking Strategies</p>
-<p>Goal: I think that enlarging horizon in business analytics by finding financial professors helps is crucial for searching for more job opportunities. Action Plan:</p>
-<p>Participate in discussions in Business Analytics &amp; Financial Analysis Groups. Connecting classmates or other alumni can help us for business experience and advice. Also, asking advisors for help when I prepare my resume for job application.</p>
-<p>Step3 Target Companies</p>
-<p>Goal: I can focus on industries that associated with both business analytics and management accounting backgrounds in future, for example, a business analyst, financial analyst, or data analyst position in a financial and consulting company or others.</p>
-<p>Target Companies and Positions:</p>
-<p>Amazon (Financial &amp; Business Intelligence Analyst)</p>
-<p>Google (Business/Data Analyst, Finance &amp; Strategy)</p>
-<p>Deloitte (Financial Advisory &amp; Data Analytics Consultant)</p>
-<p>Application Strategies:</p>
-<p>Get more experience through internships will help me enhance my problem-solving skills and make me become more competitive when facing with job application.</p>
-<p><strong>Mulai Jiang</strong></p>
-<p>Target Position: Financial Data Analyst</p>
-<p>Target Industry: Fintech &amp; Investment Banking</p>
-<p>Step 1: Skills to Learn</p>
-<p>Goal:</p>
-<p>Within the next two years, enhance technical expertise in financial data analytics and deepen knowledge of financial markets.</p>
-<p>Key Skills to Acquire:</p>
-<p>Tools Mastery: Python, SQL, and machine learning for data processing, financial modeling, and predictive analytics.</p>
-<p>Financial Market Knowledge: Portfolio optimization, risk modeling, financial forecasting, and investment analysis.</p>
-<p>Certifications: Prepare for CFA or FRM to strengthen financial expertise and industry credibility.</p>
-<p>Step 2: Networking Strategies</p>
-<p>Objective:</p>
-<p>Expand professional connections and gain insights into career opportunities in financial data analytics.</p>
-<p>Action Plan:</p>
-<p>Connect with 5-10 financial data analysts, fintech professionals, and investment bankers on LinkedIn.</p>
-<p>Attend industry conferences, networking events, and career fairs focused on fintech and investment banking.</p>
-<p>Conduct informational interviews with professionals in quantitative modeling, risk analytics, and financial forecasting roles.</p>
-<p>Step 3: Target Companies and Positions:</p>
-<p>Deloitte (Financial Modeling &amp; Risk Consulting)</p>
-<p>PwC (Market Risk &amp; Compliance Analytics)</p>
-<p>Bloomberg (Financial Market Trends &amp; Data Visualization)</p>
-<p><strong>Chao Huang</strong></p>
-<p>Target Position: Market Research Analyst</p>
-<p>Target Industry: Healthcare Consulting</p>
-<p>Step 1: Skills to Learn</p>
-<p>Goal:</p>
-<p>Within the next 6 months, enhance market analysis expertise and develop strong proficiency in data analytics and machine learning fundamentals.</p>
-<p>Key Skills to Acquire:</p>
-<p>Tools Mastery: Power BI, Excel, SQL, Python, and R for data processing and visualization.</p>
-<p>Market Analysis Techniques: Familiarity with SWOT analysis, KPI monitoring, and competitive benchmarking in the healthcare sector.</p>
-<p>Data-Driven Decision-Making: Understanding how to leverage data for business insights and strategic planning.</p>
-<p>Step 2: Networking Strategies</p>
-<p>Objective:</p>
-<p>Build industry connections and explore career advancement opportunities in market research within healthcare consulting.</p>
-<p>Action Plan:</p>
-<p>Connect with 5-10 healthcare market research professionals on LinkedIn.</p>
-<p>Attend Boston University career fairs and industry conferences focused on healthcare consulting.</p>
-<p>Engage in informational interviews with professionals working at top healthcare consulting firms.</p>
-<p>Step 3: Target Companies</p>
-<p>Objective:</p>
-<p>Secure a market research analyst role in the healthcare consulting industry within 6 months, focusing on market data analysis and healthcare consumer behavior trends.</p>
-<p>Target Companies:</p>
-<p>McKinsey &amp; Company (Healthcare Market Research Analyst)</p>
-<p>IQVIA (Healthcare Data &amp; Market Insights Analyst)</p>
-<p>ZS Associates (Healthcare Consulting Market Analyst)</p>
-<p>Application Strategy:</p>
-<p>Increase interview opportunities by leveraging internal referrals on LinkedIn.</p>
-<p>Optimize resume to emphasize market research experience, data analytics projects, and industry-relevant case studies.</p>
-<p>Gain exposure to real-world healthcare consulting cases by participating in related projects or competitions.</p>
-<section id="references" class="level2">
-
-
-
-
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-ai_labor_market_2021" class="csl-entry" role="listitem">
-<span class="smallcaps">Acemoglu, D., and P. Restrepo</span>. (2021): <span>“<a href="https://doi.org/10.1016/j.labeco.2021.102003">The impact of artificial intelligence on labor markets</a>,”</span> <em>Labour Economics</em>, 71, 102003.
 </div>
-<div id="ref-ai_economics_2023" class="csl-entry" role="listitem">
-<span class="smallcaps">Jones, C., and C. Tonetti</span>. (2023): <span>“<a href="https://doi.org/10.4337/9781839106750.00035">The Economics of Artificial Intelligence: Firm, Market, and Policy Implications</a>,”</span> in <em>The economics of artificial intelligence: A research agenda</em>, Edward Elgar Publishing, 560–78.
+<div id="29dd1982" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>skills_data <span class="op">=</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"Chao Huang"</span>, <span class="st">"Mulai Jiang"</span>, <span class="st">"Liyang Zhou"</span>, <span class="st">"Yutong Qian"</span>],</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python"</span>: [<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SQL"</span>: [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>],</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Rstudio"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tableau"</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></section></div></main> <!-- /main -->
+<div id="8d6ec261" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> pd.DataFrame(skills_data)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_skills.set_index(<span class="st">"Name"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_skills)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Python  SQL  Rstudio  Tableau
+Name                                      
+Chao Huang        4    2        4        1
+Mulai Jiang       4    3        5        5
+Liyang Zhou       4    3        3        5
+Yutong Qian       4    2        4        3</code></pre>
+</div>
+</div>
+<div id="5242a6f2" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_skills, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Team Skill Levels Heatmap"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="skill_gap_analysis_files/figure-html/cell-5-output-1.png" width="619" height="505" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="79dd017e" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>job_skill_counts <span class="op">=</span> Counter({</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python"</span>: <span class="dv">120</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SQL"</span>: <span class="dv">95</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Rstudio"</span>: <span class="dv">60</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tableau"</span>: <span class="dv">80</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AWS"</span>: <span class="dv">100</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Docker"</span>: <span class="dv">75</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1b6e138d" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>top_skills <span class="op">=</span> <span class="bu">list</span>(job_skill_counts.keys())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> skill <span class="kw">in</span> top_skills:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> skill <span class="kw">not</span> <span class="kw">in</span> df_skills.columns:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        df_skills[skill] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_skills)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Python  SQL  Rstudio  Tableau  AWS  Docker
+Name                                                   
+Chao Huang        4    2        4        1    0       0
+Mulai Jiang       4    3        5        5    0       0
+Liyang Zhou       4    3        3        5    0       0
+Yutong Qian       4    2        4        3    0       0</code></pre>
+</div>
+</div>
+<p>Recommendations： Based on the skill gap analysis, our team is strong in Python and Rstudio, and shows advanced data visualization abilities, especially Tableau for two members. However, no one currently has experience with AWS or Docker, which are high-demand skills in the job market.</p>
+<p>Individual Recommendations:</p>
+<p>Chao Huang</p>
+<p>Strengths: Python, Rstudio Suggested improvements: Learn Tableau for dashboard building and storytelling. Begin AWS Cloud Fundamentals. Recommended Resources: Coursera: “AWS Cloud Practitioner Essentials” YouTube: “Tableau for Beginners – Full Course”</p>
+<p>Mulai Jiang</p>
+<p>Strengths: Python, Rstudio, Tableau Suggested improvements: Improve SQL for better data querying. Learn Docker to understand DevOps workflows. Recommended Resources: Khan Academy / Mode Analytics SQL Track Udemy: “Docker &amp; Kubernetes for Beginners”</p>
+<p>Liyang Zhou</p>
+<p>Strengths: Python, Tableau Suggested improvements: Deepen Rstudio usage for data analysis. Begin AWS for cloud deployment knowledge. Recommended Resources: edX: “Introduction to R for Data Science” AWS Skill Builder (free cloud labs)</p>
+<p>Yutong Qian</p>
+<p>Strengths: Python, Rstudio Suggested improvements: Strengthen SQL skills. Learn Docker for pipeline and automation. Recommended Resources: DataCamp: “Intermediate SQL” Docker Official Docs (play with Docker playground) Team Collaboration Suggestions We recommend that the team hold regular weekly learning sessions on AWS and Docker to help all members build basic cloud computing. In terms of data analysis, SQL and Rstudio can be mastered through pair programming, with skilled members leading the overall improvement. As a practical project, we recommend that everyone work together to complete a dashboard system based on Tableau visualization and deployed through AWS, so that data visualization and cloud deployment capabilities can be exercised in real projects.</p>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

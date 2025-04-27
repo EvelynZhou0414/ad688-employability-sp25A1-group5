@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Group 5">
-<meta name="dcterms.date" content="2025-04-27">
 
-<title>Job Market Analysis 2024 - Research Introduction: AI vs.&nbsp;Non-AI Careers</title>
+<title>Job Market Analysis 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -109,7 +122,7 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -117,7 +130,7 @@ div.csl-indent {
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data_cleaning.html"> 
+    <a class="nav-link active" href="./data_cleaning.html" aria-current="page"> 
 <span class="menu-text">Data Cleaning &amp; Exploration</span></a>
   </li>  
   <li class="nav-item">
@@ -148,181 +161,161 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#market-trends" id="toc-market-trends" class="nav-link active" data-scroll-target="#market-trends"><strong>Market Trends</strong></a></li>
-  <li><a href="#skill-analysis" id="toc-skill-analysis" class="nav-link" data-scroll-target="#skill-analysis"><strong>Skill analysis</strong></a></li>
-  <li><a href="#career-strategy-recommendations" id="toc-career-strategy-recommendations" class="nav-link" data-scroll-target="#career-strategy-recommendations"><strong>Career Strategy Recommendations</strong></a></li>
-  <li><a href="#personal-career-strategic-plan" id="toc-personal-career-strategic-plan" class="nav-link" data-scroll-target="#personal-career-strategic-plan"><strong>Personal career strategic plan</strong></a>
-  <ul class="collapse">
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Research Introduction: AI vs.&nbsp;Non-AI Careers</h1>
+
+
+
+<div id="9ff59e8c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas matplotlib seaborn</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.info()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#replace the missing Values</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>missing_values <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>missing_percentage <span class="op">=</span> (missing_values <span class="op">/</span> <span class="bu">len</span>(df)) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> pd.DataFrame({<span class="st">"Missing Values"</span>: missing_values, <span class="st">"Percentage"</span>: missing_percentage})</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> missing_data[missing_data[<span class="st">"Missing Values"</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>missing_data <span class="op">=</span> missing_data.sort_values(by<span class="op">=</span><span class="st">"Percentage"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>salary_median <span class="op">=</span> df[<span class="st">"SALARY"</span>].median()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"SALARY"</span>].fillna(salary_median, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#convert time columns</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>date_columns <span class="op">=</span> [<span class="st">"LAST_UPDATED_DATE"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>, <span class="st">"POSTED"</span>, <span class="st">"EXPIRED"</span>]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> date_columns:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> df.columns:  </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        df[col] <span class="op">=</span> pd.to_datetime(df[col], errors<span class="op">=</span><span class="st">"coerce"</span>, utc<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract Data</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> df[[<span class="st">'TITLE'</span>, <span class="st">'SALARY'</span>, <span class="st">'SALARY_FROM'</span>, <span class="st">'SALARY_TO'</span>, <span class="st">'SKILLS'</span>]]</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(selected_columns.head())</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>selected_columns.to_csv(<span class="st">'Extracted_data.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas in /home/ubuntu/.local/lib/python3.10/site-packages (2.2.3)
+Requirement already satisfied: matplotlib in /usr/lib/python3/dist-packages (3.5.1)
+Requirement already satisfied: seaborn in /home/ubuntu/.local/lib/python3.10/site-packages (0.13.2)
+Requirement already satisfied: numpy&gt;=1.22.4 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (1.24.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2025.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2025.1)
+Requirement already satisfied: six&gt;=1.5 in /home/ubuntu/.local/lib/python3.10/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+
+[notice] A new release of pip is available: 25.0.1 -&gt; 25.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 72498 entries, 0 to 72497
+Columns: 131 entries, ID to NAICS_2022_6_NAME
+dtypes: float64(38), object(93)
+memory usage: 72.5+ MB
+                                         ID LAST_UPDATED_DATE  \
+0  1f57d95acf4dc67ed2819eb12f049f6a5c11782c          9/6/2024   
+1  0cb072af26757b6c4ea9464472a50a443af681ac          8/2/2024   
+2  85318b12b3331fa490d32ad014379df01855c557          9/6/2024   
+3  1b5c3941e54a1889ef4f8ae55b401a550708a310          9/6/2024   
+4  cb5ca25f02bdf25c13edfede7931508bfd9e858f         6/19/2024   
+
+      LAST_UPDATED_TIMESTAMP  DUPLICATES    POSTED    EXPIRED  DURATION  \
+0  2024-09-06 20:32:57.352 Z         0.0  6/2/2024   6/8/2024       6.0   
+1  2024-08-02 17:08:58.838 Z         0.0  6/2/2024   8/1/2024       NaN   
+2  2024-09-06 20:32:57.352 Z         1.0  6/2/2024   7/7/2024      35.0   
+3  2024-09-06 20:32:57.352 Z         1.0  6/2/2024  7/20/2024      48.0   
+4  2024-06-19 07:00:00.000 Z         0.0  6/2/2024  6/17/2024      15.0   
+
+             SOURCE_TYPES                                        SOURCES  \
+0       [\n  "Company"\n]                        [\n  "brassring.com"\n]   
+1     [\n  "Job Board"\n]                            [\n  "maine.gov"\n]   
+2     [\n  "Job Board"\n]                           [\n  "dejobs.org"\n]   
+3     [\n  "Job Board"\n]  [\n  "disabledperson.com",\n  "dejobs.org"\n]   
+4  [\n  "FreeJobBoard"\n]                       [\n  "craigslist.org"\n]   
+
+                                                 URL  ... NAICS_2022_2  \
+0  [\n  "https://sjobs.brassring.com/TGnewUI/Sear...  ...         44.0   
+1   [\n  "https://joblink.maine.gov/jobs/1085740"\n]  ...         56.0   
+2  [\n  "https://dejobs.org/dallas-tx/data-analys...  ...         52.0   
+3  [\n  "https://www.disabledperson.com/jobs/5948...  ...         52.0   
+4  [\n  "https://modesto.craigslist.org/sls/77475...  ...         99.0   
+
+                                   NAICS_2022_2_NAME NAICS_2022_3  \
+0                                       Retail Trade        441.0   
+1  Administrative and Support and Waste Managemen...        561.0   
+2                              Finance and Insurance        524.0   
+3                              Finance and Insurance        522.0   
+4                              Unclassified Industry        999.0   
+
+                              NAICS_2022_3_NAME NAICS_2022_4  \
+0               Motor Vehicle and Parts Dealers       4413.0   
+1           Administrative and Support Services       5613.0   
+2     Insurance Carriers and Related Activities       5242.0   
+3  Credit Intermediation and Related Activities       5221.0   
+4                         Unclassified Industry       9999.0   
+
+                                   NAICS_2022_4_NAME  NAICS_2022_5  \
+0  Automotive Parts, Accessories, and Tire Retailers       44133.0   
+1                                Employment Services       56132.0   
+2  Agencies, Brokerages, and Other Insurance Rela...       52429.0   
+3                   Depository Credit Intermediation       52211.0   
+4                              Unclassified Industry       99999.0   
+
+                            NAICS_2022_5_NAME NAICS_2022_6  \
+0  Automotive Parts and Accessories Retailers     441330.0   
+1                     Temporary Help Services     561320.0   
+2          Other Insurance Related Activities     524291.0   
+3                          Commercial Banking     522110.0   
+4                       Unclassified Industry     999999.0   
+
+                            NAICS_2022_6_NAME  
+0  Automotive Parts and Accessories Retailers  
+1                     Temporary Help Services  
+2                            Claims Adjusting  
+3                          Commercial Banking  
+4                       Unclassified Industry  
+
+[5 rows x 131 columns]
+                TITLE    SALARY  SALARY_FROM  SALARY_TO  \
+0  ET29C073C03D1F86B4  116300.0          NaN        NaN   
+1  ET21DDA63780A7DC09  116300.0          NaN        NaN   
+2  ET3037E0C947A02404  116300.0          NaN        NaN   
+3  ET2114E0404BA30075  116300.0          NaN        NaN   
+4  ET0000000000000000   92500.0      35000.0   150000.0   
+
+                                              SKILLS  
+0  [\n  "KS126DB6T061MHD7RTGQ",\n  "KS126706DPFD3...  
+1  [\n  "KS122626T550SLQ7QZ1C",\n  "KS123YJ6KVWC9...  
+2  [\n  "KS1218W78FGVPVP2KXPX",\n  "ESF3939CE1F80...  
+3  [\n  "KS123QX62QYTC4JF38H8",\n  "KS7G6NP6R6L1H...  
+4                                                 []  </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_7255/1001905087.py:7: DtypeWarning:
+
+Columns (19,30) have mixed types. Specify dtype option on import or set low_memory=False.
+
+/tmp/ipykernel_7255/1001905087.py:19: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+</code></pre>
+</div>
 </div>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Group 5 </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 27, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="market-trends" class="level1">
-<h1><strong>Market Trends</strong></h1>
-<p>AI is generating jobs and causing some effects in fields like healthcare, finance, and technology. In healthcare, they’re using AI to simplify diagnoses, discover new drugs, and tailor medicine to individuals, which is creating more demand for those familiar with AI in medicine (Medium, 2024). In finance, they’re using AI for fraud detection, risk assessment, and high-frequency trading, so there’s greater demand for data analysts and machine learning specialists too (Globalization Partners, 2024).</p>
-<p>Although AI has created many new positions in some fields, it’s also making individuals to lose their jobs in some industries based on the same old repetitive and manual work. These days retail and manufacturing businesses are losing traditional jobs since robots and automation, some of which uses AI, are doing the human work (Innopharma Education, 2024). And what about customer support roles? Well, they’re at risk too since AI chatbots and virtual assistants are responding to more and more customer inquiries. They are creating less need for human representatives (Nexford, 2024).</p>
-<p>AI jobs also get paid much more than average. If we look at fields like data science, AI engineering, and cloud computing, those professionals make a lot more than professionals like accounting, mechanical engineering, or retail. In addition, AI job postings are still increasing, especially in tech hubs like Silicon Valley, Boston, and Austin, where companies are especially willing to recruit AI talent (Globalization Partners, 2024).</p>
-<p>Companies are indeed searching for AI professionals in areas like machine learning, cybersecurity, and automation. However, since there is a shortage of qualified AI professionals, those who have AI skills can command relatively decent salaries and perks. New industries like fintech and AI-driven healthcare are booming with job growth, which is a positive development for anyone who has AI-related skills (Medium, 2024).</p>
-</section>
-<section id="skill-analysis" class="level1">
-<h1><strong>Skill analysis</strong></h1>
-<p>The demand for AI skills grew 4 times over the period from 2010 to 2019. Firms are striving to hire more employees with AI-related skills, especially in the last three years, and the demand is still gaining momentum <span class="citation" data-cites="ai_labor_market_2021">(<a href="#ref-ai_labor_market_2021" role="doc-biblioref">Acemoglu and Restrepo (2021)</a>)</span>. AI skills are important for technical positions. What’s more, these skills can provide a competitive salary advantage in managerial positions. We can focus on both technical and non-technical skills required for AI related jobs and analyze their importance in the job market.</p>
-<p>For technical skills, Python, R and Java are the most frequently used AI tools for data analysis. When a company needs to clean large datasets, employees or employers who are familiar with data modeling, data warehousing, and big data processing can use Hadoop, Spark, and SQL database tools to solve problems. Employees who have designing experience can do better when optimizing machine learning models for different applications. TensorFlow, PyTorch, and scikit-learn can be applied in training and optimizing AI models. In the aspect of AI Security, all corporations should be aware of AI-related security threats to prevent from attacks in AI models, so they can develop strategies in advance to ensure AI usage.</p>
-<p>For non-technical skills, translating complex AI texts, some concepts and models into understandable language for administrators is one of the most important abilities. People should follow emerging AI trends, new algorithms, and evolving technologies and continue learning new AI tools and adjusting strategies for the company.</p>
-</section>
-<section id="career-strategy-recommendations" class="level1">
-<h1><strong>Career Strategy Recommendations</strong></h1>
-<p>A large number of ready AI tools, mainly in the Machine Learning (ML) field that has dominated the last decades of 21st century, offer opportunities to businesses and organizations to get involved and built machine learning solutions for their needs and customers<span class="citation" data-cites="ai_economics_2023">(<a href="#ref-ai_economics_2023" role="doc-biblioref">Jones and Tonetti (2023)</a>)</span>. CFA and FRM courses provide knowledge in financial and risk management. To enhance AI deployment capabilities, professionals can get certifications such as AWS Certified Machine Learning – Specialty, Microsoft Azure AI Engineer Associate, and Google Cloud Professional Data Engineer. These certifications provide whole framework of building, deploying, and managing AI solutions on cloud platforms. Professionals looking to excel in AI and data-driven fields should develop strong proficiency in programming and data manipulation, particularly with Python, SQL, R, and Spark. Lastly, learning something in big data processing such as Hadoop, Kubernetes, and MLOps can help company process data efficiently.</p>
-<p>While AI is emerging in many different industries, non-AI remains, particularly in fields that combine AI with traditional tools. Industries such as finance, healthcare, manufacturing, and marketing still require professionals about financials domaintly, even if AI plays a supporting role. Instead of fully changing to AI, professionals in finance, project management, healthcare, and marketing can still enhance their competitiveness by gaining AI and other data-driven skills. However, for those who are seeking higher salaries, transitioning into AI-related postions can definitely be highly beneficial.</p>
-</section>
-<section id="personal-career-strategic-plan" class="level1">
-<h1><strong>Personal career strategic plan</strong></h1>
-<p><strong>Liyang Zhou</strong></p>
-<p>Target position: Market Research Analyst</p>
-<p>Target Industry: Automotive Industry</p>
-<p>Step 1: Skills to Learn</p>
-<p>Goal: In the next 6 months, improve market analysis skills and master the fundamentals of data analysis and machine learning.</p>
-<p>Skills Learning:</p>
-<p>• Tools: Master Power BI, Excel, SQL, Python &amp; R for data processing and visualization.</p>
-<p>• Familiar with SWOT analysis and KPI monitoring for industry competition analysis and market positioning.</p>
-<p>• Learning Data-Driven Decision Making</p>
-<p>Step 2: Networking Strategies</p>
-<p>Objective: To build industry contacts and obtain more career development opportunities related to market research.</p>
-<p>Action Plan:</p>
-<p>• Connect with 5-10 market research professionals in your field on LinkedIn.</p>
-<p>• Attend the Boston university career fair to network with potential employers.</p>
-<p>Step 3: Target Companies</p>
-<p>Objective: Apply for and enter an automotive related market research position within 6 months, focusing on market data analysis and consumer behavior research.</p>
-<p>Target company</p>
-<p>1.Tesla (Automotive Market Analyst)</p>
-<p>2.BMW (Consumer Trends Researcher)</p>
-<p>3.NIO (New Energy Vehicle Market Analyst)</p>
-<p>Application Strategy:</p>
-<p>• Improve your chances of being interviewed by applying for targeted jobs through internal recommendations on LinkedIn.</p>
-<p>• Adjust your resume to highlight experience in analytical projects in relevant industries.</p>
-<p><strong>Yutong Qian</strong></p>
-<p>Step1 Skills to Learn</p>
-<p>Goal: For working in strategy and decision, I should strengthen business and financial analytics skills.</p>
-<p>Skills to Learn:</p>
-<p>Tools: Master SQL, Python, R, Excel, and Power BI for data cleaning, processing and visualizing.</p>
-<p>Courses: The courses I can learn in BU classes.</p>
-<p>Decision-Making Strategies: Learn framework for data processing in order to improve working efficiency in strategy and making decisions.</p>
-<p>Other Skills: Improving communication skills and writing are crucial when I working with a team.</p>
-<p>Step2 Networking Strategies</p>
-<p>Goal: I think that enlarging horizon in business analytics by finding financial professors helps is crucial for searching for more job opportunities. Action Plan:</p>
-<p>Participate in discussions in Business Analytics &amp; Financial Analysis Groups. Connecting classmates or other alumni can help us for business experience and advice. Also, asking advisors for help when I prepare my resume for job application.</p>
-<p>Step3 Target Companies</p>
-<p>Goal: I can focus on industries that associated with both business analytics and management accounting backgrounds in future, for example, a business analyst, financial analyst, or data analyst position in a financial and consulting company or others.</p>
-<p>Target Companies and Positions:</p>
-<p>Amazon (Financial &amp; Business Intelligence Analyst)</p>
-<p>Google (Business/Data Analyst, Finance &amp; Strategy)</p>
-<p>Deloitte (Financial Advisory &amp; Data Analytics Consultant)</p>
-<p>Application Strategies:</p>
-<p>Get more experience through internships will help me enhance my problem-solving skills and make me become more competitive when facing with job application.</p>
-<p><strong>Mulai Jiang</strong></p>
-<p>Target Position: Financial Data Analyst</p>
-<p>Target Industry: Fintech &amp; Investment Banking</p>
-<p>Step 1: Skills to Learn</p>
-<p>Goal:</p>
-<p>Within the next two years, enhance technical expertise in financial data analytics and deepen knowledge of financial markets.</p>
-<p>Key Skills to Acquire:</p>
-<p>Tools Mastery: Python, SQL, and machine learning for data processing, financial modeling, and predictive analytics.</p>
-<p>Financial Market Knowledge: Portfolio optimization, risk modeling, financial forecasting, and investment analysis.</p>
-<p>Certifications: Prepare for CFA or FRM to strengthen financial expertise and industry credibility.</p>
-<p>Step 2: Networking Strategies</p>
-<p>Objective:</p>
-<p>Expand professional connections and gain insights into career opportunities in financial data analytics.</p>
-<p>Action Plan:</p>
-<p>Connect with 5-10 financial data analysts, fintech professionals, and investment bankers on LinkedIn.</p>
-<p>Attend industry conferences, networking events, and career fairs focused on fintech and investment banking.</p>
-<p>Conduct informational interviews with professionals in quantitative modeling, risk analytics, and financial forecasting roles.</p>
-<p>Step 3: Target Companies and Positions:</p>
-<p>Deloitte (Financial Modeling &amp; Risk Consulting)</p>
-<p>PwC (Market Risk &amp; Compliance Analytics)</p>
-<p>Bloomberg (Financial Market Trends &amp; Data Visualization)</p>
-<p><strong>Chao Huang</strong></p>
-<p>Target Position: Market Research Analyst</p>
-<p>Target Industry: Healthcare Consulting</p>
-<p>Step 1: Skills to Learn</p>
-<p>Goal:</p>
-<p>Within the next 6 months, enhance market analysis expertise and develop strong proficiency in data analytics and machine learning fundamentals.</p>
-<p>Key Skills to Acquire:</p>
-<p>Tools Mastery: Power BI, Excel, SQL, Python, and R for data processing and visualization.</p>
-<p>Market Analysis Techniques: Familiarity with SWOT analysis, KPI monitoring, and competitive benchmarking in the healthcare sector.</p>
-<p>Data-Driven Decision-Making: Understanding how to leverage data for business insights and strategic planning.</p>
-<p>Step 2: Networking Strategies</p>
-<p>Objective:</p>
-<p>Build industry connections and explore career advancement opportunities in market research within healthcare consulting.</p>
-<p>Action Plan:</p>
-<p>Connect with 5-10 healthcare market research professionals on LinkedIn.</p>
-<p>Attend Boston University career fairs and industry conferences focused on healthcare consulting.</p>
-<p>Engage in informational interviews with professionals working at top healthcare consulting firms.</p>
-<p>Step 3: Target Companies</p>
-<p>Objective:</p>
-<p>Secure a market research analyst role in the healthcare consulting industry within 6 months, focusing on market data analysis and healthcare consumer behavior trends.</p>
-<p>Target Companies:</p>
-<p>McKinsey &amp; Company (Healthcare Market Research Analyst)</p>
-<p>IQVIA (Healthcare Data &amp; Market Insights Analyst)</p>
-<p>ZS Associates (Healthcare Consulting Market Analyst)</p>
-<p>Application Strategy:</p>
-<p>Increase interview opportunities by leveraging internal referrals on LinkedIn.</p>
-<p>Optimize resume to emphasize market research experience, data analytics projects, and industry-relevant case studies.</p>
-<p>Gain exposure to real-world healthcare consulting cases by participating in related projects or competitions.</p>
-<section id="references" class="level2">
-
-
-
-
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-ai_labor_market_2021" class="csl-entry" role="listitem">
-<span class="smallcaps">Acemoglu, D., and P. Restrepo</span>. (2021): <span>“<a href="https://doi.org/10.1016/j.labeco.2021.102003">The impact of artificial intelligence on labor markets</a>,”</span> <em>Labour Economics</em>, 71, 102003.
-</div>
-<div id="ref-ai_economics_2023" class="csl-entry" role="listitem">
-<span class="smallcaps">Jones, C., and C. Tonetti</span>. (2023): <span>“<a href="https://doi.org/10.4337/9781839106750.00035">The Economics of Artificial Intelligence: Firm, Market, and Policy Implications</a>,”</span> in <em>The economics of artificial intelligence: A research agenda</em>, Edward Elgar Publishing, 560–78.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

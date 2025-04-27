@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.547">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -133,19 +133,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction.qmd"> 
+    <a class="nav-link" href="./introduction.html"> 
 <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data_cleaning.qmd/ipynb"> 
+    <a class="nav-link" href="./data_cleaning.html"> 
 <span class="menu-text">Data Cleaning &amp; Exploration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eda.qmd/ipynb"> 
+    <a class="nav-link" href="./eda.html"> 
 <span class="menu-text">Exploratory Data Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./skill_gap_analysis.qmd/ipynb"> 
+    <a class="nav-link" href="./skill_gap_analysis.html"> 
 <span class="menu-text">Skill Gap Analysis</span></a>
   </li>  
   <li class="nav-item">
@@ -230,17 +230,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="5e0d1c52" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c55b6316" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas matplotlib missingno plotly seaborn</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas in /home/ubuntu/.local/lib/python3.10/site-packages (2.2.3)
+Requirement already satisfied: matplotlib in /usr/lib/python3/dist-packages (3.5.1)
+Requirement already satisfied: missingno in /home/ubuntu/.local/lib/python3.10/site-packages (0.5.2)
+Requirement already satisfied: plotly in /home/ubuntu/.local/lib/python3.10/site-packages (6.0.1)
+Requirement already satisfied: seaborn in /home/ubuntu/.local/lib/python3.10/site-packages (0.13.2)
+Requirement already satisfied: numpy&gt;=1.22.4 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (1.24.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2025.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/ubuntu/.local/lib/python3.10/site-packages (from pandas) (2025.1)
+Requirement already satisfied: scipy in /usr/lib/python3/dist-packages (from missingno) (1.8.0)
+Requirement already satisfied: narwhals&gt;=1.15.1 in /home/ubuntu/.local/lib/python3.10/site-packages (from plotly) (1.31.0)
+Requirement already satisfied: packaging in /home/ubuntu/.local/lib/python3.10/site-packages (from plotly) (24.2)
+Requirement already satisfied: six&gt;=1.5 in /home/ubuntu/.local/lib/python3.10/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+
+[notice] A new release of pip is available: 25.0.1 -&gt; 25.1
+[notice] To update, run: python3 -m pip install --upgrade pip</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_7170/194054761.py:9: DtypeWarning:
+
+Columns (19,30) have mixed types. Specify dtype option on import or set low_memory=False.
+</code></pre>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div>
 <div>
 
 
@@ -275,121 +301,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>1f57d95acf4dc67ed2819eb12f049f6a5c11782c</td>
-<td>2024-09-06</td>
+<td>9/6/2024</td>
 <td>2024-09-06 20:32:57.352 Z</td>
-<td>0</td>
-<td>2024-06-02</td>
-<td>2024-06-08</td>
+<td>0.0</td>
+<td>6/2/2024</td>
+<td>6/8/2024</td>
 <td>6.0</td>
 <td>[\n "Company"\n]</td>
 <td>[\n "brassring.com"\n]</td>
 <td>[\n "https://sjobs.brassring.com/TGnewUI/Sear...</td>
 <td>...</td>
-<td>44</td>
+<td>44.0</td>
 <td>Retail Trade</td>
-<td>441</td>
+<td>441.0</td>
 <td>Motor Vehicle and Parts Dealers</td>
-<td>4413</td>
+<td>4413.0</td>
 <td>Automotive Parts, Accessories, and Tire Retailers</td>
-<td>44133</td>
+<td>44133.0</td>
 <td>Automotive Parts and Accessories Retailers</td>
-<td>441330</td>
+<td>441330.0</td>
 <td>Automotive Parts and Accessories Retailers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>0cb072af26757b6c4ea9464472a50a443af681ac</td>
-<td>2024-08-02</td>
+<td>8/2/2024</td>
 <td>2024-08-02 17:08:58.838 Z</td>
-<td>0</td>
-<td>2024-06-02</td>
-<td>2024-08-01</td>
+<td>0.0</td>
+<td>6/2/2024</td>
+<td>8/1/2024</td>
 <td>NaN</td>
 <td>[\n "Job Board"\n]</td>
 <td>[\n "maine.gov"\n]</td>
 <td>[\n "https://joblink.maine.gov/jobs/1085740"\n]</td>
 <td>...</td>
-<td>56</td>
+<td>56.0</td>
 <td>Administrative and Support and Waste Managemen...</td>
-<td>561</td>
+<td>561.0</td>
 <td>Administrative and Support Services</td>
-<td>5613</td>
+<td>5613.0</td>
 <td>Employment Services</td>
-<td>56132</td>
+<td>56132.0</td>
 <td>Temporary Help Services</td>
-<td>561320</td>
+<td>561320.0</td>
 <td>Temporary Help Services</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>85318b12b3331fa490d32ad014379df01855c557</td>
-<td>2024-09-06</td>
+<td>9/6/2024</td>
 <td>2024-09-06 20:32:57.352 Z</td>
-<td>1</td>
-<td>2024-06-02</td>
-<td>2024-07-07</td>
+<td>1.0</td>
+<td>6/2/2024</td>
+<td>7/7/2024</td>
 <td>35.0</td>
 <td>[\n "Job Board"\n]</td>
 <td>[\n "dejobs.org"\n]</td>
 <td>[\n "https://dejobs.org/dallas-tx/data-analys...</td>
 <td>...</td>
-<td>52</td>
+<td>52.0</td>
 <td>Finance and Insurance</td>
-<td>524</td>
+<td>524.0</td>
 <td>Insurance Carriers and Related Activities</td>
-<td>5242</td>
+<td>5242.0</td>
 <td>Agencies, Brokerages, and Other Insurance Rela...</td>
-<td>52429</td>
+<td>52429.0</td>
 <td>Other Insurance Related Activities</td>
-<td>524291</td>
+<td>524291.0</td>
 <td>Claims Adjusting</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>1b5c3941e54a1889ef4f8ae55b401a550708a310</td>
-<td>2024-09-06</td>
+<td>9/6/2024</td>
 <td>2024-09-06 20:32:57.352 Z</td>
-<td>1</td>
-<td>2024-06-02</td>
-<td>2024-07-20</td>
+<td>1.0</td>
+<td>6/2/2024</td>
+<td>7/20/2024</td>
 <td>48.0</td>
 <td>[\n "Job Board"\n]</td>
 <td>[\n "disabledperson.com",\n "dejobs.org"\n]</td>
 <td>[\n "https://www.disabledperson.com/jobs/5948...</td>
 <td>...</td>
-<td>52</td>
+<td>52.0</td>
 <td>Finance and Insurance</td>
-<td>522</td>
+<td>522.0</td>
 <td>Credit Intermediation and Related Activities</td>
-<td>5221</td>
+<td>5221.0</td>
 <td>Depository Credit Intermediation</td>
-<td>52211</td>
+<td>52211.0</td>
 <td>Commercial Banking</td>
-<td>522110</td>
+<td>522110.0</td>
 <td>Commercial Banking</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>cb5ca25f02bdf25c13edfede7931508bfd9e858f</td>
-<td>2024-06-19</td>
+<td>6/19/2024</td>
 <td>2024-06-19 07:00:00.000 Z</td>
-<td>0</td>
-<td>2024-06-02</td>
-<td>2024-06-17</td>
+<td>0.0</td>
+<td>6/2/2024</td>
+<td>6/17/2024</td>
 <td>15.0</td>
 <td>[\n "FreeJobBoard"\n]</td>
 <td>[\n "craigslist.org"\n]</td>
 <td>[\n "https://modesto.craigslist.org/sls/77475...</td>
 <td>...</td>
-<td>99</td>
+<td>99.0</td>
 <td>Unclassified Industry</td>
-<td>999</td>
+<td>999.0</td>
 <td>Unclassified Industry</td>
-<td>9999</td>
+<td>9999.0</td>
 <td>Unclassified Industry</td>
-<td>99999</td>
+<td>99999.0</td>
 <td>Unclassified Industry</td>
-<td>999999</td>
+<td>999999.0</td>
 <td>Unclassified Industry</td>
 </tr>
 </tbody>
@@ -399,118 +425,379 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
-<div id="0ffc82eb" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS_2022_2"</span>, <span class="st">"NAICS_2022_3"</span>, <span class="st">"NAICS_2022_4"</span>, <span class="st">"NAICS_2022_5"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7ed76d19" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS_2022_2"</span>, <span class="st">"NAICS_2022_3"</span>, <span class="st">"NAICS_2022_4"</span>, <span class="st">"NAICS_2022_5"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case, the following columns are considered irrelevant or redundant: ID, used only for uniquely identifying data rows; URL and ACTIVE_URLS, which contain webpage links with no analytical significance; DUPLICATES, used for internal deduplication; and LAST_UPDATED_TIMESTAMP, which only records data update times. Additionally, NAICS2 - NAICS6 include excessive industry classification codes that may cause redundancy, while SOC_2, SOC_3, and SOC_5 are detailed occupational classifications that do not impact the final analysis. As multiple versions of NAICS/SOC codes, it is important to remove several of them. Since different versions provide similar information but may include duplicates or slight variations, leading to data bloat. Besides, if we do not cancel them, it is possible that we use two different version to analysis. This may cause problem in deeper analysis. In order to improve the accuracy of analysis, we first deleted irrelevant columns to reduce irrelevant data and improve the efficiency of data cleaning. Then remove duplicate data to ensure that each recruitment information is unique to prevent data duplication. Replace categorical variables (such as Industry) with “Unknown” to maintain data integrity.</p>
-<div id="0a2d0807" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(df)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.dropna(thresh<span class="op">=</span><span class="bu">len</span>(df) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> numerical_columns:</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    df[col].fillna(df[col].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> categorical_columns:</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    df[col].fillna(<span class="st">"Unknown"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(df.columns))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bd7fc35c" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(df)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df.dropna(thresh<span class="op">=</span><span class="bu">len</span>(df) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> numerical_columns:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    df[col].fillna(df[col].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> categorical_columns:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    df[col].fillna(<span class="st">"Unknown"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(df.columns))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-4-output-1.png" width="1766" height="1218" class="figure-img"></p>
 </figure>
 </div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:9: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+
+/tmp/ipykernel_7170/2634717440.py:12: FutureWarning:
+
+A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['LAST_UPDATED_DATE', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2_NAME', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5_NAME', 'NAICS_2022_2_NAME', 'NAICS_2022_3_NAME', 'NAICS_2022_4_NAME', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
 </div>
 </div>
 <p>In order to analyze the employment market trends more intuitively, we use the following visualization methods: The bar chart can show the number of recruitments in each industry, and directly show some industries with the highest recruitment demand.The box plot can show the salary distribution of each industry. This chart can show the median and extreme values ​​of salaries in different industries. The pie chart shows the proportion of remote or offline work. The line chart can show the trend more clearly and is used to observe whether AI-related positions are actually growing faster.</p>
-<div id="b4c25ac4" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top_20_industries <span class="op">=</span> df[<span class="st">"NAICS2_NAME"</span>].value_counts().nlargest(<span class="dv">20</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>top_20_industries.plot(kind<span class="op">=</span><span class="st">"bar"</span>, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Job Postings by Industry"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Industry"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Job Postings"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">"y"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a0aa365f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>top_20_industries <span class="op">=</span> df[<span class="st">"NAICS2_NAME"</span>].value_counts().nlargest(<span class="dv">20</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>top_20_industries.plot(kind<span class="op">=</span><span class="st">"bar"</span>, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Job Postings by Industry"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Industry"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Job Postings"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">"y"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-5-output-1.png" width="1052" height="893" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Bar Chart: Job Postings by Industry Key Findings 1.- The chart shows that “Professional, Scientific, and Technical Services” has a much higher number of job postings than any other industry, more than double the number of the second industry. This indicates that specialized skills such as technology, engineering, data science, and consulting are in high demand. 2. Higher demand for hiring in Finance and Insurance and Manufacturing indicates a growth in demand for skilled professionals in these sectors. 3. Retail, Arts, Accommodation and Food Services have significantly lower hiring demand, reflecting the fact that these industries may be affected by automation, the economic climate and the development of AI. 4. Higher hiring in Unclassified Industries, which may include emerging industries or cross-cutting positions such as AI R&amp;D and freelancing, suggests that the labor market is undergoing structural change. Key insights Job seekers can focus more on high-demand industries, especially in technology, finance and manufacturing. AI and data-related careers are in high demand, and upgrading skills such as Python, SQL, and machine learning will increase competitiveness. Candidates in low-demand sectors can transition into cross-industry roles, such as tech-related roles or upgrading cross-industry skills.</p>
-<div id="1ac5d447" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>top_20_industries <span class="op">=</span> df[<span class="st">"NAICS_2022_6_NAME"</span>].value_counts().nlargest(<span class="dv">20</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df[df[<span class="st">"NAICS_2022_6_NAME"</span>].isin(top_20_industries.index)]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>salary_columns <span class="op">=</span> [<span class="st">"Salary"</span>, <span class="st">"WAGE"</span>, <span class="st">"COMPENSATION"</span>, <span class="st">"HOURLY_RATE"</span>]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>salary_col <span class="op">=</span> <span class="bu">next</span>((col <span class="cf">for</span> col <span class="kw">in</span> df.columns <span class="cf">if</span> col <span class="kw">in</span> salary_columns), <span class="va">None</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df_filtered, x<span class="op">=</span><span class="st">"NAICS_2022_6_NAME"</span>, y<span class="op">=</span>salary_col)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Salary Distribution by Industry"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Industry"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Salary"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="24f5d5a0" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>top_20_industries <span class="op">=</span> df[<span class="st">"NAICS_2022_6_NAME"</span>].value_counts().nlargest(<span class="dv">20</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df[df[<span class="st">"NAICS_2022_6_NAME"</span>].isin(top_20_industries.index)]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>salary_columns <span class="op">=</span> [<span class="st">"Salary"</span>, <span class="st">"WAGE"</span>, <span class="st">"COMPENSATION"</span>, <span class="st">"HOURLY_RATE"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>salary_col <span class="op">=</span> <span class="bu">next</span>((col <span class="cf">for</span> col <span class="kw">in</span> df.columns <span class="cf">if</span> col <span class="kw">in</span> salary_columns), <span class="va">None</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df_filtered, x<span class="op">=</span><span class="st">"NAICS_2022_6_NAME"</span>, y<span class="op">=</span>salary_col)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Salary Distribution by Industry"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Industry"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Salary"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-6-output-1.png" width="1065" height="941" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Boxplot: Salary Distribution by Industry Key Findings 1. The box plot shows a wide distribution of median salaries by industry, which suggests that there may be large salary gaps between industries. 2. Certain industries have narrower salary distributions, such as General Medical and Surgical Hospitals and Insurance Agencies and Brokerages, suggesting that salaries in these industries are relatively stable and may have standardized salary structures. 3. The impact of outliers touching the far ends of the box plot suggests that extreme high salaries in certain industries (e.g., executive positions, hot tech jobs) can significantly drive up average salaries. Key insights For job seekers looking for higher salaries, focus on industries with wider salary distributions and higher upper quartiles. For job seekers looking for a stable salary, healthcare and education industries offer less salary variability and are ideal for long-term career planning. Industry choice is critical to salary growth, and job seekers can choose a career path that suits them based on salary distribution and their own skills.</p>
-<div id="dbce3a0a" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"REMOTE_TYPE_NAME"</span>] <span class="op">=</span> df[<span class="st">"REMOTE_TYPE_NAME"</span>].replace({<span class="va">None</span>: <span class="st">"On-Site"</span>, <span class="st">"[None]"</span>: <span class="st">"On-Site"</span>})</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>remote_counts <span class="op">=</span> df[<span class="st">"REMOTE_TYPE_NAME"</span>].value_counts()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.pie(remote_counts, labels<span class="op">=</span>remote_counts.index, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, startangle<span class="op">=</span><span class="dv">140</span>, colors<span class="op">=</span>[<span class="st">'#636EFA'</span>, <span class="st">'#EF553B'</span>, <span class="st">'#00CC96'</span>, <span class="st">'#AB63FA'</span>])</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Remote vs. On-Site Jobs"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8aec1c7a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"REMOTE_TYPE_NAME"</span>] <span class="op">=</span> df[<span class="st">"REMOTE_TYPE_NAME"</span>].replace({<span class="va">None</span>: <span class="st">"On-Site"</span>, <span class="st">"[None]"</span>: <span class="st">"On-Site"</span>})</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>remote_counts <span class="op">=</span> df[<span class="st">"REMOTE_TYPE_NAME"</span>].value_counts()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.pie(remote_counts, labels<span class="op">=</span>remote_counts.index, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, startangle<span class="op">=</span><span class="dv">140</span>, colors<span class="op">=</span>[<span class="st">'#636EFA'</span>, <span class="st">'#EF553B'</span>, <span class="st">'#00CC96'</span>, <span class="st">'#AB63FA'</span>])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Remote vs. On-Site Jobs"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-7-output-1.png" width="463" height="485" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Pie Chart: Remote vs.&nbsp;On-Site Jobs Key Findings 1. 78.3% of jobs are on-site, indicating that despite the growth of remote jobs, most companies still prefer employees to work in the office. 2. Remote jobs make up 17% of the workforce, indicating that the trend toward telecommuting continues to grow. 3. The growth of the Hybrid Remote model, with 3.11% of positions being Hybrid Remote, suggests that some companies are adopting a part remote, part on-site work model to increase employee flexibility and productivity. 4. Not Remote may mean that some positions are explicitly not telecommuting. key insights Hybrid office models are growing, and job seekers can choose flexible work arrangements, such as looking for partially remote positions, to improve life-work balance. On-site work is still the mainstream, and job seekers need to consider industry characteristics and their own needs.</p>
-<div id="b3eb2d52" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Data Cleaning and EDA completed successfully"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="27ef5c60" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Data Cleaning and EDA completed successfully"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Data Cleaning and EDA completed successfully</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<div>
 <div>
 
 
@@ -544,15 +831,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>2024-09-06</td>
-<td>2024-06-02</td>
-<td>2024-06-08</td>
+<td>9/6/2024</td>
+<td>6/2/2024</td>
+<td>6/8/2024</td>
 <td>6.0</td>
 <td>[\n "Company"\n]</td>
 <td>[\n "brassring.com"\n]</td>
 <td>Enterprise Analyst (II-III)</td>
 <td>31-May-2024\n\nEnterprise Analyst (II-III)\n\n...</td>
-<td>2024-06-08</td>
+<td>6/8/2024</td>
 <td>6.0</td>
 <td>...</td>
 <td>Mathematical Science Occupations</td>
@@ -563,20 +850,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Motor Vehicle and Parts Dealers</td>
 <td>Automotive Parts, Accessories, and Tire Retailers</td>
 <td>Automotive Parts and Accessories Retailers</td>
-<td>441330</td>
+<td>441330.0</td>
 <td>Automotive Parts and Accessories Retailers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>2024-08-02</td>
-<td>2024-06-02</td>
-<td>2024-08-01</td>
+<td>8/2/2024</td>
+<td>6/2/2024</td>
+<td>8/1/2024</td>
 <td>18.0</td>
 <td>[\n "Job Board"\n]</td>
 <td>[\n "maine.gov"\n]</td>
 <td>Oracle Consultant - Reports (3592)</td>
 <td>Oracle Consultant - Reports (3592)\n\nat SMX i...</td>
-<td>2024-08-01</td>
+<td>8/1/2024</td>
 <td>16.0</td>
 <td>...</td>
 <td>Mathematical Science Occupations</td>
@@ -587,20 +874,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Administrative and Support Services</td>
 <td>Employment Services</td>
 <td>Temporary Help Services</td>
-<td>561320</td>
+<td>561320.0</td>
 <td>Temporary Help Services</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>2024-09-06</td>
-<td>2024-06-02</td>
-<td>2024-07-07</td>
+<td>9/6/2024</td>
+<td>6/2/2024</td>
+<td>7/7/2024</td>
 <td>35.0</td>
 <td>[\n "Job Board"\n]</td>
 <td>[\n "dejobs.org"\n]</td>
 <td>Data Analyst</td>
 <td>Taking care of people is at the heart of every...</td>
-<td>2024-06-10</td>
+<td>6/10/2024</td>
 <td>8.0</td>
 <td>...</td>
 <td>Mathematical Science Occupations</td>
@@ -611,20 +898,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Insurance Carriers and Related Activities</td>
 <td>Agencies, Brokerages, and Other Insurance Rela...</td>
 <td>Other Insurance Related Activities</td>
-<td>524291</td>
+<td>524291.0</td>
 <td>Claims Adjusting</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>2024-09-06</td>
-<td>2024-06-02</td>
-<td>2024-07-20</td>
+<td>9/6/2024</td>
+<td>6/2/2024</td>
+<td>7/20/2024</td>
 <td>48.0</td>
 <td>[\n "Job Board"\n]</td>
 <td>[\n "disabledperson.com",\n "dejobs.org"\n]</td>
 <td>Sr. Lead Data Mgmt. Analyst - SAS Product Owner</td>
 <td>About this role:\n\nWells Fargo is looking for...</td>
-<td>2024-06-12</td>
+<td>6/12/2024</td>
 <td>10.0</td>
 <td>...</td>
 <td>Mathematical Science Occupations</td>
@@ -635,20 +922,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Credit Intermediation and Related Activities</td>
 <td>Depository Credit Intermediation</td>
 <td>Commercial Banking</td>
-<td>522110</td>
+<td>522110.0</td>
 <td>Commercial Banking</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>2024-06-19</td>
-<td>2024-06-02</td>
-<td>2024-06-17</td>
+<td>6/19/2024</td>
+<td>6/2/2024</td>
+<td>6/17/2024</td>
 <td>15.0</td>
 <td>[\n "FreeJobBoard"\n]</td>
 <td>[\n "craigslist.org"\n]</td>
 <td>Comisiones de $1000 - $3000 por semana... Comi...</td>
 <td>Comisiones de $1000 - $3000 por semana... Comi...</td>
-<td>2024-06-17</td>
+<td>6/17/2024</td>
 <td>15.0</td>
 <td>...</td>
 <td>Mathematical Science Occupations</td>
@@ -659,14 +946,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Unclassified Industry</td>
 <td>Unclassified Industry</td>
 <td>Unclassified Industry</td>
-<td>999999</td>
+<td>999999.0</td>
 <td>Unclassified Industry</td>
 </tr>
 </tbody>
 </table>
 
 <p>5 rows × 109 columns</p>
-</div>
 </div>
 </div>
 </div>
