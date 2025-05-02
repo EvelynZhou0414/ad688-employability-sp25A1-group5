@@ -11,7 +11,7 @@ skills_data = {
     "Name": ["Chao Huang", "Mulai Jiang", "Liyang Zhou", "Yutong Qian"],
     "Python": [4, 4, 4, 4],
     "SQL": [2, 3, 3, 2],
-    "Rstudio": [4, 5, 3, 4],
+    "R": [4, 5, 3, 4],
     "Tableau": [1, 5, 5, 3]
 }
 ```
@@ -35,7 +35,7 @@ from collections import Counter
 job_skill_counts = Counter({
     "Python": 120,
     "SQL": 95,
-    "Rstudio": 60,
+    "R": 60,
     "Tableau": 80,
     "AWS": 100,
     "Docker": 75
@@ -50,13 +50,13 @@ for skill in top_skills:
 print(df_skills)
 ```
 
-Recommendations： Based on the skill gap analysis, our team is strong in Python and Rstudio, and shows advanced data visualization abilities, especially Tableau for two members. However, no one currently has experience with AWS or Docker, which are high-demand skills in the job market.
+Recommendations： Based on the skill gap analysis, our team is strong in Python and R, and shows advanced data visualization abilities, especially Tableau for two members. However, no one currently has experience with AWS or Docker, which are high-demand skills in the job market.
 
 Individual Recommendations:
 
 Chao Huang
 
-Strengths: Python, Rstudio
+Strengths: Python, R
 Suggested improvements:
 Learn Tableau for dashboard building and storytelling.
 Begin AWS Cloud Fundamentals.
@@ -66,7 +66,7 @@ YouTube: “Tableau for Beginners – Full Course”
 
 Mulai Jiang
 
-Strengths: Python, Rstudio, Tableau
+Strengths: Python, R, Tableau
 Suggested improvements:
 Improve SQL for better data querying.
 Learn Docker to understand DevOps workflows.
@@ -78,7 +78,7 @@ Liyang Zhou
 
 Strengths: Python, Tableau
 Suggested improvements:
-Deepen Rstudio usage for data analysis.
+Deepen R usage for data analysis.
 Begin AWS for cloud deployment knowledge.
 Recommended Resources:
 edX: “Introduction to R for Data Science”
@@ -86,11 +86,11 @@ AWS Skill Builder (free cloud labs)
 
 Yutong Qian
 
-Strengths: Python, Rstudio
+Strengths: Python, R
 Suggested improvements:
 Strengthen SQL skills.
 Learn Docker for pipeline and automation.
 Recommended Resources:
 DataCamp: “Intermediate SQL”
 Docker Official Docs (play with Docker playground)
-Team Collaboration Suggestions We recommend that the team hold regular weekly learning sessions on AWS and Docker to help all members build basic cloud computing. In terms of data analysis, SQL and Rstudio can be mastered through pair programming, with skilled members leading the overall improvement. As a practical project, we recommend that everyone work together to complete a dashboard system based on Tableau visualization and deployed through AWS, so that data visualization and cloud deployment capabilities can be exercised in real projects.
+Team Collaboration Suggestions We recommend that the team hold regular weekly learning sessions on AWS and Docker to help all members build basic cloud computing. In terms of data analysis, SQL and R can be mastered through pair programming, with skilled members leading the overall improvement. As a practical project, we recommend that everyone work together to complete a dashboard system based on Tableau visualization and deployed through AWS, so that data visualization and cloud deployment capabilities can be exercised in real projects.
