@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="612609de" class="cell" data-execution_count="1">
+<div id="640cbe5a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas matplotlib missingno plotly seaborn</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -244,8 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>Requirement already satisfied: pandas in ./venv/lib/python3.12/site-packages (2.2.3)
 Requirement already satisfied: matplotlib in ./venv/lib/python3.12/site-packages (3.10.1)
-Collecting missingno
-  Using cached missingno-0.5.2-py3-none-any.whl.metadata (639 bytes)
+Requirement already satisfied: missingno in ./venv/lib/python3.12/site-packages (0.5.2)
 Requirement already satisfied: plotly in ./venv/lib/python3.12/site-packages (6.0.1)
 Requirement already satisfied: seaborn in ./venv/lib/python3.12/site-packages (0.13.2)
 Requirement already satisfied: numpy&gt;=1.26.0 in ./venv/lib/python3.12/site-packages (from pandas) (2.2.5)
@@ -259,14 +258,9 @@ Requirement already satisfied: kiwisolver&gt;=1.3.1 in ./venv/lib/python3.12/sit
 Requirement already satisfied: packaging&gt;=20.0 in ./venv/lib/python3.12/site-packages (from matplotlib) (24.2)
 Requirement already satisfied: pillow&gt;=8 in ./venv/lib/python3.12/site-packages (from matplotlib) (11.2.1)
 Requirement already satisfied: pyparsing&gt;=2.3.1 in ./venv/lib/python3.12/site-packages (from matplotlib) (3.2.3)
-Collecting scipy (from missingno)
-  Using cached scipy-1.15.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Requirement already satisfied: scipy in ./venv/lib/python3.12/site-packages (from missingno) (1.15.2)
 Requirement already satisfied: narwhals&gt;=1.15.1 in ./venv/lib/python3.12/site-packages (from plotly) (1.37.1)
-Requirement already satisfied: six&gt;=1.5 in ./venv/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
-Using cached missingno-0.5.2-py3-none-any.whl (8.7 kB)
-Using cached scipy-1.15.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (37.3 MB)
-Installing collected packages: scipy, missingno
-Successfully installed missingno-0.5.2 scipy-1.15.2</code></pre>
+Requirement already satisfied: six&gt;=1.5 in ./venv/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
@@ -429,7 +423,7 @@ Successfully installed missingno-0.5.2 scipy-1.15.2</code></pre>
 </div>
 </div>
 </div>
-<div id="fdc1743b" class="cell" data-execution_count="2">
+<div id="b5b93be1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS_2022_2"</span>, <span class="st">"NAICS_2022_3"</span>, <span class="st">"NAICS_2022_4"</span>, <span class="st">"NAICS_2022_5"</span>,</span>
@@ -438,7 +432,7 @@ Successfully installed missingno-0.5.2 scipy-1.15.2</code></pre>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case, the following columns are considered irrelevant or redundant: ID, used only for uniquely identifying data rows; URL and ACTIVE_URLS, which contain webpage links with no analytical significance; DUPLICATES, used for internal deduplication; and LAST_UPDATED_TIMESTAMP, which only records data update times. Additionally, NAICS2 - NAICS6 include excessive industry classification codes that may cause redundancy, while SOC_2, SOC_3, and SOC_5 are detailed occupational classifications that do not impact the final analysis. As multiple versions of NAICS/SOC codes, it is important to remove several of them. Since different versions provide similar information but may include duplicates or slight variations, leading to data bloat. Besides, if we do not cancel them, it is possible that we use two different version to analysis. This may cause problem in deeper analysis. In order to improve the accuracy of analysis, we first deleted irrelevant columns to reduce irrelevant data and improve the efficiency of data cleaning. Then remove duplicate data to ensure that each recruitment information is unique to prevent data duplication. Replace categorical variables (such as Industry) with “Unknown” to maintain data integrity.</p>
-<div id="02addcb5" class="cell" data-execution_count="3">
+<div id="97fe2977" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(df)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
@@ -461,7 +455,7 @@ Successfully installed missingno-0.5.2 scipy-1.15.2</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+<pre><code>/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -470,7 +464,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -479,7 +473,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -488,7 +482,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -497,7 +491,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -506,7 +500,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -515,7 +509,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -524,7 +518,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -533,7 +527,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -542,7 +536,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -551,7 +545,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -560,7 +554,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -569,7 +563,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -578,7 +572,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -587,7 +581,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -596,7 +590,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -605,7 +599,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -614,7 +608,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -623,7 +617,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -632,7 +626,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -641,7 +635,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -650,7 +644,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -659,7 +653,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -668,7 +662,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -677,7 +671,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -686,7 +680,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -695,7 +689,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -704,7 +698,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:9: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:9: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -713,7 +707,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 
 
 
-/tmp/ipykernel_17067/2634717440.py:12: FutureWarning:
+/tmp/ipykernel_27351/2634717440.py:12: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -728,7 +722,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 </div>
 </div>
 <p>In order to analyze the employment market trends more intuitively, we use the following visualization methods: The bar chart can show the number of recruitments in each industry, and directly show some industries with the highest recruitment demand.The box plot can show the salary distribution of each industry. This chart can show the median and extreme values ​​of salaries in different industries. The pie chart shows the proportion of remote or offline work. The line chart can show the trend more clearly and is used to observe whether AI-related positions are actually growing faster.</p>
-<div id="f1a8fc7d" class="cell" data-execution_count="4">
+<div id="e1549ec8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>top_20_industries <span class="op">=</span> df[<span class="st">"NAICS2_NAME"</span>].value_counts().nlargest(<span class="dv">20</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -749,7 +743,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 </div>
 </div>
 <p>Bar Chart: Job Postings by Industry Key Findings 1.- The chart shows that “Professional, Scientific, and Technical Services” has a much higher number of job postings than any other industry, more than double the number of the second industry. This indicates that specialized skills such as technology, engineering, data science, and consulting are in high demand. 2. Higher demand for hiring in Finance and Insurance and Manufacturing indicates a growth in demand for skilled professionals in these sectors. 3. Retail, Arts, Accommodation and Food Services have significantly lower hiring demand, reflecting the fact that these industries may be affected by automation, the economic climate and the development of AI. 4. Higher hiring in Unclassified Industries, which may include emerging industries or cross-cutting positions such as AI R&amp;D and freelancing, suggests that the labor market is undergoing structural change. Key insights Job seekers can focus more on high-demand industries, especially in technology, finance and manufacturing. AI and data-related careers are in high demand, and upgrading skills such as Python, SQL, and machine learning will increase competitiveness. Candidates in low-demand sectors can transition into cross-industry roles, such as tech-related roles or upgrading cross-industry skills.</p>
-<div id="80d8841a" class="cell" data-execution_count="5">
+<div id="b8c6c16b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>top_20_industries <span class="op">=</span> df[<span class="st">"NAICS_2022_6_NAME"</span>].value_counts().nlargest(<span class="dv">20</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df[df[<span class="st">"NAICS_2022_6_NAME"</span>].isin(top_20_industries.index)]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -775,7 +769,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 </div>
 </div>
 <p>Boxplot: Salary Distribution by Industry Key Findings 1. The box plot shows a wide distribution of median salaries by industry, which suggests that there may be large salary gaps between industries. 2. Certain industries have narrower salary distributions, such as General Medical and Surgical Hospitals and Insurance Agencies and Brokerages, suggesting that salaries in these industries are relatively stable and may have standardized salary structures. 3. The impact of outliers touching the far ends of the box plot suggests that extreme high salaries in certain industries (e.g., executive positions, hot tech jobs) can significantly drive up average salaries. Key insights For job seekers looking for higher salaries, focus on industries with wider salary distributions and higher upper quartiles. For job seekers looking for a stable salary, healthcare and education industries offer less salary variability and are ideal for long-term career planning. Industry choice is critical to salary growth, and job seekers can choose a career path that suits them based on salary distribution and their own skills.</p>
-<div id="9ef35669" class="cell" data-execution_count="6">
+<div id="a9df8e17" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"REMOTE_TYPE_NAME"</span>] <span class="op">=</span> df[<span class="st">"REMOTE_TYPE_NAME"</span>].replace({<span class="va">None</span>: <span class="st">"On-Site"</span>, <span class="st">"[None]"</span>: <span class="st">"On-Site"</span>})</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>remote_counts <span class="op">=</span> df[<span class="st">"REMOTE_TYPE_NAME"</span>].value_counts()</span>
@@ -795,7 +789,7 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 </div>
 </div>
 <p>Pie Chart: Remote vs.&nbsp;On-Site Jobs Key Findings 1. 78.3% of jobs are on-site, indicating that despite the growth of remote jobs, most companies still prefer employees to work in the office. 2. Remote jobs make up 17% of the workforce, indicating that the trend toward telecommuting continues to grow. 3. The growth of the Hybrid Remote model, with 3.11% of positions being Hybrid Remote, suggests that some companies are adopting a part remote, part on-site work model to increase employee flexibility and productivity. 4. Not Remote may mean that some positions are explicitly not telecommuting. key insights Hybrid office models are growing, and job seekers can choose flexible work arrangements, such as looking for partially remote positions, to improve life-work balance. On-site work is still the mainstream, and job seekers need to consider industry characteristics and their own needs.</p>
-<div id="7b3fbdf6" class="cell" data-execution_count="7">
+<div id="285adce8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Data Cleaning and EDA completed successfully"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
