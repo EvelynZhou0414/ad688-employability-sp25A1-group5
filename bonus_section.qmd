@@ -1,0 +1,40 @@
+## Bonus Section: NLP-Based AI Job Classification
+
+This section was completed to fulfill the optional bonus (+10 points) for extended analysis using natural language processing.
+
+We explored whether the textual content of job descriptions (`BODY`) could be used to predict whether a job is AI-related. This involved both classification modeling using TF-IDF features and visual inspection via WordClouds.
+
+---
+
+###  TF-IDF + Logistic Regression Classification
+
+We used `TfidfVectorizer` to convert unstructured job description text into structured numerical features, selecting the top 1,000 tokens. A Logistic Regression classifier was trained to predict AI-related roles.
+
+---
+
+### WordCloud Analysis: AI vs. Non-AI Job Descriptions
+
+To supplement the classification results, we generated WordClouds that visualize the most frequently appearing words in AI and non-AI job descriptions.
+
+#### AI Job WordCloud  
+![AI Job WordCloud](images/ai_wordcloud.png)
+
+#### Non-AI Job WordCloud  
+![Non-AI Job WordCloud](images/nonai_wordcloud.png)
+
+**Insights from WordClouds:**
+- AI job descriptions prominently include terms like `"data analyst"`, `"data governance"`, `"experience with data"`, and `"machine learning"`.
+- Non-AI jobs also emphasize `"ability to"`, `"collaborate"`, and `"communication"`, but with less technical specificity.
+- Both categories include standard HR language, such as `"equal opportunity"`, `"bachelor degree"`, and `"job description"`.
+
+These patterns reinforce the idea that AI roles emphasize technical proficiency, while non-AI roles lean toward soft skills and operational language.
+
+---
+
+### ✅ Takeaways
+
+- Job description text alone can provide predictive signals for AI-related role detection.
+- NLP-based classification adds interpretability and complements structured-data models.
+- Job seekers targeting AI careers should consider using technical terms in resumes that align with frequently appearing phrases in AI postings.
+
+This bonus section demonstrates the value of unstructured data in employment analytics and enriches our broader findings on AI job trends.

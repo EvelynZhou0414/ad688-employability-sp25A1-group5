@@ -18,8 +18,12 @@ website:
         text: "Skill Gap Analysis"
       - href: ml_methods.ipynb
         text: "ML Methods"
-      - href: nlp_methods.qmd/ipynb
+      - href: nlp_methods.ipynb
         text: "NLP Methods"
+      - href: final_analytics.qmd
+        text: "Final Analytics"
+      - href: bonus_section.qmd
+        text: "Bonus Section"
 format:
   html:
     theme: cosmo

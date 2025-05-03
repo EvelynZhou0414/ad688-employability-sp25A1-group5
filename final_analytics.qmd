@@ -1,0 +1,77 @@
+## Final Analytics and Insights
+
+---
+
+###  Regression Model: Salary Prediction
+
+#### 1. Model Goals and Features
+
+The goal of this regression model is to predict job salary based on structured features and analyze how different factors influence salary levels.  
+The selected features include:
+- Job title (`TITLE_RAW`)
+- Industry (`NAICS`)
+- Location (`STATE_NAME`)
+- Number of skills required (`num_skills`)
+- Whether the job is remote (`REMOTE_TYPE_NAME`)
+- Whether the job is AI-related (`IS_AI_ROLE`)
+
+#### 2. Model Conclusions and Insights
+
+- AI-related jobs consistently offer higher salaries compared to non-AI roles.
+- Remote positions and roles based in tech-centric states (e.g., California, Washington) are associated with higher salary ranges.
+- The number of required skills correlates positively with salary, but the effect diminishes after a certain threshold (diminishing returns).
+
+#### 3. Advice for Job Seekers
+
+- Prioritize AI-related or hybrid roles that incorporate AI elements.
+- Invest in developing in-demand skills such as machine learning, cloud computing (e.g., AWS).
+- Consider targeting remote jobs or positions located in high-paying regions.
+
+---
+
+###  Classification Model: AI Role Detection
+
+#### 1. Model Goals and Features
+
+The goal of this classification model is to predict whether a job is AI-related based on categorical and numeric features.  
+Key features include:
+- Keywords in job title
+- NAICS industry code
+- Number of skills required
+- Remote work indicator
+- Location of job posting
+
+#### 2. Model Conclusions and Insights
+
+- Two classification models were built; the second model included additional engineered features.
+- Overall accuracy improved to 69%, with recall for AI roles increasing from 0.39 to 0.45.
+- The F1 score remains moderate (0.52), suggesting that class imbalance is still a challenge.
+
+#### 3. Advice for Job Seekers
+
+- Use AI-relevant keywords in job applications and resumes to align with AI classifications.
+- Emphasize technical skills, especially machine learning and cloud technologies.
+- Understand which job titles are commonly associated with AI to refine search strategies.
+
+---
+
+### Cross-Model Takeaways
+
+- AI-related roles consistently signal higher compensation across models.
+- Remote jobs are advantageous both in terms of flexibility and salary.
+- Skill count is a strong predictor but shows a nonlinear relationship with salary.
+
+---
+
+### Limitations and Opportunities
+
+- Class imbalance affected classification model performance.
+- Future work could integrate NLP-based features (e.g., word embeddings, job description parsing).
+- Modeling interaction effects and analyzing salary ranges (`SALARY_FROM` to `SALARY_TO`) could offer deeper insights.
+
+---
+
+###  Final Reflection
+
+This project provided the opportunity to explore job market trends using real-world labor market data and multiple machine learning models.  
+We identified strong predictors of salary and AI affiliation and translated these insights into actionable advice for job seekers.
