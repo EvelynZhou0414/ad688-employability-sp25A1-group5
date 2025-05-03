@@ -61,14 +61,11 @@ fig_ind.show()
 ```{python}
 import plotly.express as px
 
-# 填补缺失值
 df['REMOTE_TYPE_NAME'] = df['REMOTE_TYPE_NAME'].fillna('On-Site')
 
-# 统计各类型数量
 remote_counts = df['REMOTE_TYPE_NAME'].value_counts().reset_index()
 remote_counts.columns = ['Remote Type', 'Count']
 
-# 画可互动的水平条形图
 fig_remote = px.bar(
     remote_counts,
     x='Count',
@@ -80,7 +77,6 @@ fig_remote = px.bar(
     color_discrete_sequence=px.colors.qualitative.Pastel
 )
 
-# 优化布局
 fig_remote.update_layout(
     template='plotly_white',
     xaxis_title='Count',
@@ -88,10 +84,8 @@ fig_remote.update_layout(
     font=dict(family='Roboto', size=14)
 )
 
-# 保存图像
 fig_remote.write_image("figures/remote_bar.png")
 
-# 显示图表
 fig_remote.show()
 ```
 
